@@ -9,7 +9,7 @@ public class main{
 
         //}
     }
-    // invoke this class to test code out
+    // invoke this method to test code out
     public static void degubbing(){
         if(wordStorage.wordbank.contains("APPLE")){
             System.out.println("contains apple");
