@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class wordStorage {
+public class WordStorage{
     
     //this is the ArrayList that holds the words
     //to reference it, use wordStroage.wordbank

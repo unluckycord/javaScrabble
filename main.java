@@ -1,9 +1,9 @@
 import java.io.IOException;
 
-public class main{
+public class Main{
     public static boolean run = true;
     public static void main(String[] args) throws IOException {
-        wordStorage.loadingWords();
+        WordStorage.loadingWords();
         degubbing();
         //while(run){
 
@@ -11,9 +11,9 @@ public class main{
     }
     // invoke this method to test code out
     public static void degubbing(){
-        if(wordStorage.wordbank.contains("APPLE")){
-            System.out.println("contains apple");
+        if(WordStorage.wordbank.contains("WHETSTONE")){
+            System.out.println("contains WHETSTONE");
         }
-        System.out.println(wordStorage.wordbank);
+        //System.out.println(wordStorage.wordbank);
     }
 }
