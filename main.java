@@ -15,7 +15,7 @@ public class main{
     public static void main(String[] args) throws IOException {
         wordStorage.loadingWords();
         intLetterCount();
-        degubbing();
+        //degubbing();
         //while(run){
             
         //}
