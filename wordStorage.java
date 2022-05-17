@@ -1,14 +1,14 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 
-public class WordStorage{
+public class wordStorage{
     
     //this is the ArrayList that holds the words
     //to reference it, use wordStroage.wordbank
 
-    public static ArrayList<String> wordbank = new ArrayList<String>();
+    public static HashMap<String, Integer> wordbank = new HashMap<String, Integer>();
     
     //this method grabs words from the dictionary
     //and stores them in an ArrayList
@@ -17,7 +17,7 @@ public class WordStorage{
         try(BufferedReader br = new BufferedReader(new FileReader("dictionary.txt"))){
             String line = br.readLine();
             while(line != null){
-                wordbank.add(line);
+                wordbank.put(line, 0);
                 line = br.readLine();
             }
         }
