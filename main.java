@@ -16,7 +16,6 @@ public class main{
         wordStorage.loadingWords();
         intLetterCount();
         degubbing();
-        System.out.println(GameLogic.letterComparison());
         //while(run){
             
         //}
