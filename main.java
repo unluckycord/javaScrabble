@@ -13,10 +13,12 @@ public class main{
 
     public static boolean run = true;
     public static void main(String[] args) throws IOException {
-        
         wordStorage.loadingWords();
+        intLetterCount();
         degubbing();
+        System.out.println(GameLogic.letterComparison());
         //while(run){
+            
         //}
     }
     // invoke this method to test code out
