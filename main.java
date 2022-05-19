@@ -19,6 +19,7 @@ public class main{
     public static void main(String[] args) throws IOException {
         wordStorage.loadingWords();
         intLetterCount();
+        Assets.loadAssets();
         //degubbing();
         //while(run){
             
