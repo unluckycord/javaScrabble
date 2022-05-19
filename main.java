@@ -3,9 +3,13 @@ import java.util.HashMap;
 
 public class main{
 
-    private HashMap<Letters, Integer> letterCount = new HashMap<Letters, Integer>();
+    private static HashMap<Letters, Integer> letterCount = new HashMap<Letters, Integer>();
 
     public static void intLetterCount(){
+        /**
+         * initializes our letter count for our bag
+        **/
+        
         //switch(Letters){
             
         //}
