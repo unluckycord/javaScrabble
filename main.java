@@ -4,7 +4,7 @@ import java.util.HashMap;
 public class main{
 
     private static HashMap<Letters, Integer> letterCount = new HashMap<Letters, Integer>();
-
+// This comment worked Kyrie
     public static void intLetterCount(){
         /**
          * initializes our letter count for our bag
