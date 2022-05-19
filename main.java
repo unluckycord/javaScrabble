@@ -4,7 +4,6 @@ import java.util.HashMap;
 public class main{
 
     private static HashMap<Letters, Integer> letterCount = new HashMap<Letters, Integer>();
-
     public static void intLetterCount(){
         /**
          * initializes our letter count for our bag
@@ -18,8 +17,9 @@ public class main{
     public static boolean run = true;
     public static void main(String[] args) throws IOException {
         wordStorage.loadingWords();
-        intLetterCount();
-        Assets.loadAssets();
+        System.out.println(GameLogic.letterComparison("word"));
+        //intLetterCount();
+        //Assets.loadAssets();
         //degubbing();
         //while(run){
             
@@ -27,9 +27,6 @@ public class main{
     }
     // invoke this method to test code out
     public static void degubbing(){
-        if(wordStorage.wordbank.containsKey("WHETSTONE")){
-            System.out.println("contains WHETSTONE");
-        }
         //System.out.println(wordStorage.wordbank);
     }
 }
