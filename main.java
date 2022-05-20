@@ -3,6 +3,8 @@ import java.util.HashMap;
 
 public class main{
 
+    //test comment
+
     private static HashMap<Letters, Integer> letterCount = new HashMap<Letters, Integer>();
     public static void intLetterCount(){
         /**
