@@ -9,14 +9,19 @@ public class GameLogic {
     
     // random letter bag
     public static char randomLetter(HashMap<Character, Integer> bag){
+        //random letter bag
+        
         char random = (char)(Math.random() * 27 + 'A');
         // 91 = [ or Z+1
         if(random == 91){
             random = ' ';
         }
+        
         bag.put(random, bag.get(random)-1);
         total--;
-        System.out.println(total);
+
+        //System.out.println(total);
+        
         return random;
     }
 }

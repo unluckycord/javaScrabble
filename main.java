@@ -8,9 +8,8 @@ public class main{
     private static HashMap<Character, Integer> letterCount = new HashMap<Character, Integer>();
     
     public static void intLetterCount(){
-        /**
-         * initializes our letter count for our bag
-        **/
+        // initializes our letter count for our bag
+        
         for(char start = 'A'; start <= 'Z'; start++){
             letterCount.put(start, Letters.valueOf(""+start).getCount());
         }
