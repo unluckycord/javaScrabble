@@ -1,19 +1,22 @@
 import java.util.HashMap;
 
 public class GameLogic {
-
+    public static int total = 100;
     // will compare user input to words in wordbank
     public static boolean letterComparison(String word){
-        if(wordStorage.wordbank.containsKey(word.toUpperCase())){
-            return true;
-        }
-        return false;
+        return wordStorage.wordbank.containsKey(word.toUpperCase());
     }
     
     // random letter bag
-    public static String randomLetter(HashMap<Letters, Integer> bag){
-        
-        
-        return "nothing";
+    public static char randomLetter(HashMap<Character, Integer> bag){
+        char random = (char)(Math.random() * 27 + 'A');
+        // 91 = [ or Z+1
+        if(random == 91){
+            random = ' ';
+        }
+        bag.put(random, bag.get(random)-1);
+        total--;
+        System.out.println(total);
+        return random;
     }
 }
