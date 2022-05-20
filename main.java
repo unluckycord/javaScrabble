@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class main{
-//hello.
+
     private static HashMap<Letters, Integer> letterCount = new HashMap<Letters, Integer>();
     public static void intLetterCount(){
         /**
