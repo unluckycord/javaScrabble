@@ -19,12 +19,22 @@ public class main{
     public static boolean run = true;
     public static void main(String[] args) throws IOException {
         wordStorage.loadingWords();
-        System.out.println(GameLogic.letterComparison("word"));
         intLetterCount();
         //Assets.loadAssets();
         degubbing();
         //while(run){
-            
+            /*StringBuilder word = new StringBuilder();
+            Scanner sc = new Scanner(System.in);
+            char c = sc.next().charAt(0);
+            if(c == '.'){
+                sc.close();
+                if(GameLogic.wordComparison(word)){
+                    System.out.println("that word exists");
+                }
+            }else{
+                word.append(c);
+                System.out.println(word);
+            }*/
         //}
     }
     // invoke this method to test code out
@@ -33,5 +43,7 @@ public class main{
             System.out.print(GameLogic.randomLetter(letterCount));
         }
         System.out.println(letterCount);
+        System.out.println(GameLogic.wordComparison("oui"));
+        
     }
 }
