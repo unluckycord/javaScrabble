@@ -22,7 +22,7 @@ public class main{
         System.out.println(GameLogic.letterComparison("word"));
         intLetterCount();
         //Assets.loadAssets();
-        //degubbing();
+        degubbing();
         //while(run){
             
         //}
