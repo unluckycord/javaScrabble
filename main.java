@@ -1,49 +1,38 @@
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class main{
 
     //test
-
+    public static boolean run = true;
     private static HashMap<Character, Integer> letterCount = new HashMap<Character, Integer>();
+    private static HashMap<Character, Integer> letterScore = new HashMap<Character, Integer>();
     
-    public static void intLetterCount(){
+
+    public static void intLetterCountAndScore(){
         // initializes our letter count for our bag
-        
         for(char start = 'A'; start <= 'Z'; start++){
             letterCount.put(start, Letters.valueOf(""+start).getCount());
+            letterScore.put(start, Letters.valueOf(""+start).getScore());
         }
         letterCount.put(' ', Letters.BLANK.getCount());
+        letterScore.put(' ', Letters.BLANK.getScore());
     }
 
-    public static boolean run = true;
     public static void main(String[] args) throws IOException {
         wordStorage.loadingWords();
-        intLetterCount();
+        intLetterCountAndScore();
         //Assets.loadAssets();
         degubbing();
-        //while(run){
-            /*StringBuilder word = new StringBuilder();
-            Scanner sc = new Scanner(System.in);
-            char c = sc.next().charAt(0);
-            if(c == '.'){
-                sc.close();
-                if(GameLogic.wordComparison(word)){
-                    System.out.println("that word exists");
-                }
-            }else{
-                word.append(c);
-                System.out.println(word);
-            }*/
-        //}
+        Scanner userWord = new Scanner(System.in);
+        Scanner blankLetterPick = new Scanner(System.in);
+        while(run){
+            GameLogic.askForWord(userWord, blankLetterPick, letterScore);
+        }
     }
     // invoke this method to test code out
     public static void degubbing(){
-        for(int i = 0; i < 100; i++){
-            System.out.print(GameLogic.randomLetter(letterCount));
-        }
-        System.out.println(letterCount);
-        System.out.println(GameLogic.wordComparison("oui"));
-        
+        System.out.println(letterScore);
     }
 }
