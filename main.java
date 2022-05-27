@@ -33,7 +33,6 @@ public class main{
         for(int i = 1; i <= playerCount; i++){
             System.out.println("input username for player " + i + ":");
             newUsername = ask.next();
-            Player player = new Player(newUsername, 0);
             players.add(new Player(newUsername, 0));   
         }
         
@@ -45,25 +44,21 @@ public class main{
         wordStorage.loadingWords();
         initLetterCountAndScore();
         Scanner ask = new Scanner(System.in);
-        debugging();
-        /*initPlayers(ask);
+        initPlayers(ask);
         //intPlayers();
         for(int i = 0; i < playerCount; i++){
             GameLogic.intitalLetters(letterCount);
         }
         
-        //degubbing();
         do{
 
             GameLogic.askForWord(letterScore, ask);
         }while(run);
-        */
     }
     // invoke this method to test code out
     public static void debugging(){
         for(int i =0; i< 100; i++){
             System.out.print(GameLogic.randomLetter(letterCount));
         }
-        //System.out.println(letterCount);
     }
 }
