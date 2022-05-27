@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
 
 public class GameLogic {
     public static int total = 100;
@@ -18,13 +19,13 @@ public class GameLogic {
         System.out.println(" ");
     }
 
-    public static void askForWord(Scanner userWord, Scanner blankLetterPick,HashMap<Character, Integer> letterScore){
-        String word = userWord.next().toUpperCase();
+    public static void askForWord(HashMap<Character, Integer> letterScore, Scanner ask){
+        String word = ask.next().toUpperCase();
         tempStorage = word.toCharArray();
         for(int i = 0; i< tempStorage.length; i++){
             if(tempStorage[i] == '['){
                 System.out.println("please pick a blank letter");
-                tempStorage[i] = blankLetterPick.next().toUpperCase().charAt(0);
+                tempStorage[i] = ask.next().toUpperCase().charAt(0);
             }
         }
         word = String.valueOf(tempStorage).toUpperCase();
@@ -44,19 +45,30 @@ public class GameLogic {
 
     // random letter bag
     public static char randomLetter(HashMap<Character, Integer> bag){
-        //base case
-        char random = (char)(Math.random() * 27 + 'A');
+        char random = '|';
+        if(bag.isEmpty()){
+            return random;
+        }
+        Set<Character> bagSet = bag.keySet();
+        int r = (int)(Math.random()*bagSet.size());
+        int i = 0;
+        for(char c : bagSet){
+            if(i == r){
+                random=c;
+            }
+            i++;
+        }
         // 91 = [ or Z+1
         if(random == 91){
             random = ' ';
         }
         //recursion
         if(bag.get(random) == 0){
+            bag.remove(random);
             return randomLetter(bag);
         }
         //decrimetns letter count by 1
         bag.put(random, bag.get(random)-1);
-        
         return random;
     }
 }
