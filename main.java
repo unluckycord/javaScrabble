@@ -23,11 +23,13 @@ public class main{
     public static void main(String[] args) throws IOException {
         wordStorage.loadingWords();
         intLetterCountAndScore();
-        //Assets.loadAssets();
-        degubbing();
         Scanner userWord = new Scanner(System.in);
         Scanner blankLetterPick = new Scanner(System.in);
+        for(int i = 0; i < 7; i++){
+            System.out.print(GameLogic.randomLetter(letterCount));
+        }
         while(run){
+            
             GameLogic.askForWord(userWord, blankLetterPick, letterScore);
         }
     }
