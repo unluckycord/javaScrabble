@@ -23,7 +23,7 @@ public class GameLogic {
         String word = ask.next().toUpperCase();
         tempStorage = word.toCharArray();
         for(int i = 0; i< tempStorage.length; i++){
-            if(tempStorage[i] == '['){
+            if(tempStorage[i] == '*'){
                 System.out.println("please pick a blank letter");
                 tempStorage[i] = ask.next().toUpperCase().charAt(0);
             }

@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 
 //Please know this code is copied and needs a lot of editting
@@ -756,27 +753,6 @@ public class ScrabbleAI {
         return score;
     }
 
-    public static Set<String> createDictionary() {
-        Set<String> dictionary = new HashSet<String>();
-        try {
-            // creates an input object to read the txt file
-            BufferedReader in = new BufferedReader(new FileReader("words.txt"));
-            // stores the first word of the dictionary into a string
-            String str = in.readLine();
-            // as long as the string is not null
-            while (str != null) {
-                dictionary.add(str);
-                str = in.readLine();
-            }
-            // close input
-            in.close();
-            // catch and potential errors such as file not found
-        } catch (IOException e) {
-            System.out.println("an error occurred");
-        }
-        return dictionary;
-    }
-
     // print board into console
     public static void printBoard(Tile[][] board) {
         System.out.println("  00 01 02 03 04 05 06 07 08 09 10 11 12 13 14"); // number columns
@@ -794,66 +770,6 @@ public class ScrabbleAI {
             }
             System.out.println(); // new line for next row
         }
-    }
-
-    // This method will take in a character and return its associated scrabble score
-    public static int charValue(char ch) {
-        int value = 0;
-        if (ch == 'A')
-            value = 1;
-        else if (ch == 'B')
-            value = 3;
-        else if (ch == 'C')
-            value = 3;
-        else if (ch == 'D')
-            value = 2;
-        else if (ch == 'E')
-            value = 1;
-        else if (ch == 'F')
-            value = 4;
-        else if (ch == 'G')
-            value = 2;
-        else if (ch == 'H')
-            value = 4;
-        else if (ch == 'I')
-            value = 1;
-        else if (ch == 'J')
-            value = 8;
-        else if (ch == 'K')
-            value = 5;
-        else if (ch == 'L')
-            value = 1;
-        else if (ch == 'M')
-            value = 3;
-        else if (ch == 'N')
-            value = 1;
-        else if (ch == 'O')
-            value = 1;
-        else if (ch == 'P')
-            value = 3;
-        else if (ch == 'Q')
-            value = 10;
-        else if (ch == 'R')
-            value = 1;
-        else if (ch == 'S')
-            value = 1;
-        else if (ch == 'T')
-            value = 1;
-        else if (ch == 'U')
-            value = 1;
-        else if (ch == 'V')
-            value = 4;
-        else if (ch == 'W')
-            value = 4;
-        else if (ch == 'X')
-            value = 8;
-        else if (ch == 'Y')
-            value = 4;
-        else if (ch == 'Z')
-            value = 10;
-        else if (ch == '*')
-            value = 0;
-        return value;
     }
 
     // fill board with empty tile objects
