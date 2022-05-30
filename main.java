@@ -10,12 +10,17 @@ ADD WAY FOR PLAYERS TO HAVE THIER OWN LETTERS
 */
 public class main{
     private static int playerCount = 0;
+    
     //test
     public static boolean run = true;
     private static HashMap<Character, Integer> letterCount = new HashMap<Character, Integer>();
     private static HashMap<Character, Integer> letterScore = new HashMap<Character, Integer>();
     private static HashSet<Player> players = new HashSet<Player>();
     private static String[][] gameBoard = new String[16][16];
+
+    public static void clear(){
+        System.out.println("\033[H\033[2J");
+    }
 
     public static void initBoard(){
         Board Board = new Board(gameBoard);
@@ -130,23 +135,54 @@ public class main{
         
     }
     
-    public static void main(String[] args) throws IOException {
-        wordStorage.loadingWords();
-        initLetterCountAndScore();
-        Scanner ask = new Scanner(System.in);
-        initPlayers(ask);
-        initBoard();
-        //intPlayers();
-        for(int i = 0; i < playerCount; i++){
-            GameLogic.intitalLetters(letterCount);
+    public static int initMenu(Scanner ask) throws IOException{
+        Assets.loadAssets();
+        String input;
+        for(int i = 0; i < Assets.logo.size(); i++){
+            System.out.println(Assets.logo.get(i));
         }
+        System.out.println("Welcome to Scrabble! Press A to start, R to veiw rules, E to exit");
+        while(true){
+            input = ask.nextLine();
+            switch(input.toUpperCase()){
+                case "A":
+                    return 0;
+                case "R":
+                    System.out.println("rules");
+                    break;
+                case "E":
+                    run = false;
+                    clear();
+                    return 0;
+                default:
+                    System.out.println("invalid input, please try again.");
+            }
+        }
+    }
+    public static void Startgame() throws IOException{
         
-        do{
-            GameLogic.paintBoard(gameBoard);
-            GameLogic.askForWord(letterScore, ask);
-            //System.out.println("\033[H\033[2J");
-        }while(run);
+        Scanner ask = new Scanner(System.in);
+        initMenu(ask);
+        if(run){
+            wordStorage.loadingWords();
+            initLetterCountAndScore();
+            initPlayers(ask);
+            initBoard();
+            for(int i = 0; i < playerCount; i++){
+                GameLogic.intitalLetters(letterCount);
+            }
+            do{
+                GameLogic.paintBoard(gameBoard);
+                GameLogic.askForWord(letterScore, ask);
+            }while(run);
+        }
+        ask.close();
         System.out.println("\u001B[0m");
+    }
+
+    public static void main(String[] args) throws IOException {
+        clear();
+        Startgame();
     }
     // invoke this method to test code out
     public static void debugging(){
