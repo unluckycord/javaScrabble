@@ -71,4 +71,12 @@ public class GameLogic {
         bag.put(random, bag.get(random)-1);
         return random;
     }
+    public static void paintBoard(int[][] board){
+        for(int i = 0; i < 16; i++){
+            for(int f = 0; f < 16; f++){
+                System.out.print(board[f][i] + " ");
+            }
+            System.out.println();
+        }
+    }
 }

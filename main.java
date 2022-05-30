@@ -15,7 +15,16 @@ public class main{
     private static HashMap<Character, Integer> letterCount = new HashMap<Character, Integer>();
     private static HashMap<Character, Integer> letterScore = new HashMap<Character, Integer>();
     private static HashSet<Player> players = new HashSet<Player>();
+    private static int[][] gameBoard = new int[16][16];
 
+    public static void initBoard(){
+        Board Board = new Board(gameBoard);
+        for(int i = 0; i< 16; i++){
+            for(int f = 0; f < 16; f++){
+                gameBoard[f][i] = 0;
+            }
+        }
+    }
     public static void initLetterCountAndScore(){
         // initializes our letter count for our bag
         for(char start = 'A'; start <= 'Z'; start++){
@@ -45,13 +54,14 @@ public class main{
         initLetterCountAndScore();
         Scanner ask = new Scanner(System.in);
         initPlayers(ask);
+        initBoard();
         //intPlayers();
         for(int i = 0; i < playerCount; i++){
             GameLogic.intitalLetters(letterCount);
         }
         
         do{
-
+            GameLogic.paintBoard(gameBoard);
             GameLogic.askForWord(letterScore, ask);
         }while(run);
     }
