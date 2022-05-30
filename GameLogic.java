@@ -12,11 +12,13 @@ public class GameLogic {
         return wordStorage.wordbank.containsKey(word.toUpperCase());
     }
     
-    public static void intitalLetters(HashMap<Character, Integer>letterCount){
+    public static String intitalLetters(HashMap<Character, Integer>letterCount){
+        String playersLetters = "";
         for(int i = 0; i < 7; i++){
-            System.out.print(GameLogic.randomLetter(letterCount));
+            playersLetters += GameLogic.randomLetter(letterCount);
         }
         System.out.println(" ");
+        return playersLetters;
     }
 
     public static void askForWord(HashMap<Character, Integer> letterScore, Scanner ask){
@@ -29,18 +31,19 @@ public class GameLogic {
             }
         }
         word = String.valueOf(tempStorage).toUpperCase();
-        if(GameLogic.wordComparison(word)){
-            System.out.println("that word exists");
-                
-            for(int i = 0; i < tempStorage.length; i++){
-                score += letterScore.get(tempStorage[i]);
+        if(word == "stopgame"){
+            if(GameLogic.wordComparison(word)){
+                System.out.println("that word exists");
+                    
+                for(int i = 0; i < tempStorage.length; i++){
+                    score += letterScore.get(tempStorage[i]);
+                }
+                System.out.println(score);
+
             }
-            System.out.println(score);
-
-        }else{
-            System.out.println("try again, not a valid word");
+                System.out.println("try again, not a valid word");
         }
-
+        main.run = false;
     }
 
     // random letter bag
@@ -71,11 +74,13 @@ public class GameLogic {
         bag.put(random, bag.get(random)-1);
         return random;
     }
-    public static void paintBoard(int[][] board){
+    public static void paintBoard(String[][] board){
         for(int i = 0; i < 16; i++){
             for(int f = 0; f < 16; f++){
-                System.out.print(board[f][i] + " ");
+                System.out.print(board[f][i] + "  ");
             }
+            System.out.println();
+            System.out.println();
             System.out.println();
         }
     }

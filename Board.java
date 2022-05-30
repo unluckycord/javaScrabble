@@ -1,10 +1,10 @@
 public class Board {
-    private static int[][] gameBoard;
+    private static String[][] gameBoard;
 
-    public static int[][] getGameBoard(){
+    public static String[][] getGameBoard(){
         return gameBoard;
     }
-    Board(int[][] gameBoard){
+    Board(String[][] gameBoard){
         Board.gameBoard = gameBoard;
     }
 }
