@@ -151,43 +151,38 @@ public class main{
                     System.out.println("rules");
                     break;
                 case "E":
-                    run = false;
                     clear();
-                    return 0;
+                    System.exit(0);
                 default:
                     System.out.println("invalid input, please try again.");
             }
         }
     }
-    public static void Startgame() throws IOException{
+    public static void Startgame(Scanner ask) throws IOException{
         
-        Scanner ask = new Scanner(System.in);
-        initMenu(ask);
-        if(run){
-            wordStorage.loadingWords();
-            initLetterCountAndScore();
-            initPlayers(ask);
-            initBoard();
-            for(int i = 0; i < playerCount; i++){
-                GameLogic.intitalLetters(letterCount);
-            }
-            do{
-                GameLogic.paintBoard(gameBoard);
-                GameLogic.askForWord(letterScore, ask);
-            }while(run);
+        //initMenu(ask);
+        wordStorage.loadingWords();
+        initLetterCountAndScore();
+        initPlayers(ask);
+        initBoard();
+        for(int i = 0; i < playerCount; i++){
+            GameLogic.intitalLetters(letterCount);
         }
-        ask.close();
-        System.out.println("\u001B[0m");
+        //ask.close();
     }
 
     public static void main(String[] args) throws IOException {
+        Scanner ask = new Scanner(System.in);
         clear();
-        Startgame();
+        Startgame(ask);
+        do{
+            //GameLogic.paintBoard(gameBoard);
+            GameLogic.askForWord(letterScore, ask);
+            System.out.println("\u001B[0m");
+        }while(run);
     }
     // invoke this method to test code out
     public static void debugging(){
-        for(int i =0; i< 100; i++){
-            System.out.print(GameLogic.randomLetter(letterCount));
-        }
+        
     }
 }
