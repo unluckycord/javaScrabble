@@ -1,14 +1,14 @@
 public class Player {
     //TOTAL LETTERS = 100
     
-    private String username;
-    private int score;
-    private String LettersOwned;
+    private static String username;
+    private static int score;
+    private static String LettersOwned;
 
-    public String getUsername(){
+    public static String getUsername(){
         return username;
     }
-    public int getScore(){
+    public static int getScore(){
         return score;
     }
     public String getLettersOwned(){
@@ -16,19 +16,19 @@ public class Player {
     }
 
     public static void setUsername(String newUsername, Player user){
-        user.username = newUsername;
+        Player.username = newUsername;
     }
-    public void setScore(int newScore, Player user){
-        user.score += newScore;
+    public static void setScore(int newScore, Player user){
+        Player.score += newScore;
     }
     public void setLettersOwned(String newLetters, Player user){
-        user.LettersOwned = newLetters;
+        Player.LettersOwned = newLetters;
     }
 
     Player( String username, int score, String LettersOwned){
-        this.username = username; 
-        this.score = score;
-        this.LettersOwned = LettersOwned;
+        Player.username = username; 
+        Player.score = score;
+        Player.LettersOwned = LettersOwned;
     }
 
 }

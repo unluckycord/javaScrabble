@@ -1,6 +1,6 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Scanner;
 /*
 
@@ -15,7 +15,7 @@ public class main{
     public static boolean run = true;
     private static HashMap<Character, Integer> letterCount = new HashMap<Character, Integer>();
     private static HashMap<Character, Integer> letterScore = new HashMap<Character, Integer>();
-    private static HashSet<Player> players = new HashSet<Player>();
+    private static ArrayList<Player> players = new ArrayList<Player>();
     private static String[][] gameBoard = new String[16][16];
 
     public static void clear(){
@@ -159,8 +159,7 @@ public class main{
         }
     }
     public static void Startgame(Scanner ask) throws IOException{
-        
-        //initMenu(ask);
+        initMenu(ask);
         wordStorage.loadingWords();
         initLetterCountAndScore();
         initPlayers(ask);
@@ -168,7 +167,6 @@ public class main{
         for(int i = 0; i < playerCount; i++){
             GameLogic.intitalLetters(letterCount);
         }
-        //ask.close();
     }
 
     public static void main(String[] args) throws IOException {
@@ -176,9 +174,11 @@ public class main{
         clear();
         Startgame(ask);
         do{
-            //GameLogic.paintBoard(gameBoard);
-            GameLogic.askForWord(letterScore, ask);
-            System.out.println("\u001B[0m");
+            for(int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++){
+                GameLogic.paintBoard(gameBoard);
+                //System.out.println("\u001B[0m");
+                GameLogic.askForWord(letterScore, ask, players, indexOfPlayer);   
+            }
         }while(run);
     }
     // invoke this method to test code out

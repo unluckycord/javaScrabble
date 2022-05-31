@@ -1,12 +1,11 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
 
 public class GameLogic {
     public static int total = 100;
-    
     private static char[] tempStorage;
-    public static int score = 0;
     // will compare user input to words in wordbank
     public static boolean wordComparison(String word){
         return wordStorage.wordbank.containsKey(word.toUpperCase());
@@ -21,7 +20,8 @@ public class GameLogic {
         return playersLetters;
     }
 
-    public static void askForWord(HashMap<Character, Integer> letterScore, Scanner ask){
+    public static void askForWord(HashMap<Character, Integer> letterScore, Scanner ask, ArrayList<Player> players, int indexOfPlayer){
+        int score = 0;
         String word = ask.next().toUpperCase();
         tempStorage = word.toCharArray();
         for(int i = 0; i< tempStorage.length; i++){
@@ -31,19 +31,24 @@ public class GameLogic {
             }
         }
         word = String.valueOf(tempStorage).toUpperCase();
-        if(word == "stopgame"){
+        if(word != "stopgame"){
             if(GameLogic.wordComparison(word)){
                 System.out.println("that word exists");
                     
                 for(int i = 0; i < tempStorage.length; i++){
                     score += letterScore.get(tempStorage[i]);
                 }
-                System.out.println(score);
+                Player.setScore(score, players.get(0));
+                System.out.print(Player.getUsername() + ": ");
+                System.out.print(Player.getScore() + "\n");
 
-            }
+
+            }else{
                 System.out.println("try again, not a valid word");
+            }
+        }else{
+            main.run = false;
         }
-        main.run = false;
     }
 
     // random letter bag
