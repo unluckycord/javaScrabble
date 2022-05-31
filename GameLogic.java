@@ -12,6 +12,7 @@ public class GameLogic {
     }
     
     public static String intitalLetters(HashMap<Character, Integer>letterCount){
+        // gives initial letters for players
         String playersLetters = "";
         for(int i = 0; i < 7; i++){
             playersLetters += GameLogic.randomLetter(letterCount);

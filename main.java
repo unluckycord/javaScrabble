@@ -159,6 +159,7 @@ public class main{
         }
     }
     public static void Startgame(Scanner ask) throws IOException{
+        //initilizes players, words and board
         initMenu(ask);
         wordStorage.loadingWords();
         initLetterCountAndScore();
@@ -173,6 +174,7 @@ public class main{
         Scanner ask = new Scanner(System.in);
         clear();
         Startgame(ask);
+        //main loop for game
         do{
             for(int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++){
                 GameLogic.paintBoard(gameBoard);
