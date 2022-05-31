@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
@@ -21,7 +20,7 @@ public class GameLogic {
         return playersLetters;
     }
 
-    public static void askForWord(HashMap<Character, Integer> letterScore, Scanner ask, ArrayList<Player> players, int indexOfPlayer){
+    public static void askForWord(HashMap<Character, Integer> letterScore, Scanner ask, Player player){
         int score = 0;
         System.out.println("input your word\n");
         String word = ask.next().toUpperCase();
@@ -40,8 +39,8 @@ public class GameLogic {
                 for(int i = 0; i < tempStorage.length; i++){
                     score += letterScore.get(tempStorage[i]);
                 }
-                //Player.setScore(score, players.get(indexOfPlayer));
-                //System.out.println(Player.getScore());
+                player.setScore(score, player);
+                System.out.println(player.getUsername() + ": " + player.getScore());
             }else{
                 System.out.println("try again, not a valid word");
             }

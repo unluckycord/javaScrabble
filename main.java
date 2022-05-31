@@ -148,6 +148,8 @@ public class main{
                 case "A":
                     return 0;
                 case "R":
+                // INSERT RULES HERE
+                
                     System.out.println("rules");
                     break;
                 case "E":
@@ -179,7 +181,7 @@ public class main{
             for(int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++){
                 GameLogic.paintBoard(gameBoard);
                 System.out.println("\u001B[0m");
-                GameLogic.askForWord(letterScore, ask, players, indexOfPlayer);   
+                GameLogic.askForWord(letterScore, ask, players.get(indexOfPlayer));   
             }
         }while(run);
     }
