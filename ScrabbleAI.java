@@ -1,4 +1,3 @@
-import java.util.*;
 
 //Please know this code is copied and needs a lot of editting
 //This is not a working code with our own
@@ -7,7 +6,7 @@ import java.util.*;
 
 public class ScrabbleAI {
     // main method
-
+/*
     String hand;
 
     public static void main(String[] args) {
@@ -852,5 +851,5 @@ public class ScrabbleAI {
         board[12][8].setDoubleLetterScore(2);
         board[14][3].setDoubleLetterScore(2);
         board[14][11].setDoubleLetterScore(2);
-    }
+    }*/
 }
