@@ -22,6 +22,7 @@ public class GameLogic {
 
     public static void askForWord(HashMap<Character, Integer> letterScore, Scanner ask, ArrayList<Player> players, int indexOfPlayer){
         int score = 0;
+        System.out.println("input your word\n");
         String word = ask.next().toUpperCase();
         tempStorage = word.toCharArray();
         for(int i = 0; i< tempStorage.length; i++){
@@ -38,9 +39,8 @@ public class GameLogic {
                 for(int i = 0; i < tempStorage.length; i++){
                     score += letterScore.get(tempStorage[i]);
                 }
-                Player.setScore(score, players.get(0));
-                System.out.print(Player.getUsername() + ": ");
-                System.out.print(Player.getScore() + "\n");
+                //Player.setScore(score, players.get(indexOfPlayer));
+                //System.out.println(Player.getScore());
             }else{
                 System.out.println("try again, not a valid word");
             }

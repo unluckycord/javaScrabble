@@ -11,7 +11,7 @@ public class Player {
     public static int getScore(){
         return score;
     }
-    public String getLettersOwned(){
+    public static String getLettersOwned(){
         return LettersOwned;
     }
 
