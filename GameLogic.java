@@ -41,8 +41,6 @@ public class GameLogic {
                 Player.setScore(score, players.get(0));
                 System.out.print(Player.getUsername() + ": ");
                 System.out.print(Player.getScore() + "\n");
-
-
             }else{
                 System.out.println("try again, not a valid word");
             }
