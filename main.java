@@ -167,9 +167,9 @@ public class main{
         initLetterCountAndScore();
         initPlayers(ask);
         initBoard();
-        for(int i = 0; i < playerCount; i++){
-            GameLogic.intitalLetters(letterCount);
-        }
+        //for(int i = 0; i < playerCount; i++){
+        //    GameLogic.intitalLetters(letterCount);
+        //}
     }
 
     public static void main(String[] args) throws IOException {
@@ -181,7 +181,7 @@ public class main{
             for(int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++){
                 GameLogic.paintBoard(gameBoard);
                 System.out.println("\u001B[0m");
-                GameLogic.askForWord(letterScore, ask, players.get(indexOfPlayer));   
+                GameLogic.askForWord(letterScore, ask, players.get(indexOfPlayer), letterCount);   
             }
         }while(run);
     }
