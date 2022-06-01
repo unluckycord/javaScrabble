@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 /*
@@ -15,7 +14,7 @@ public class main{
     public static boolean run = true;
     private static HashMap<Character, Integer> letterCount = new HashMap<Character, Integer>();
     private static HashMap<Character, Integer> letterScore = new HashMap<Character, Integer>();
-    private static ArrayList<Player> players = new ArrayList<Player>();
+    private static Player[] players;
     private static String[][] gameBoard = new String[16][16];
 
     public static void clear(){
@@ -130,7 +129,7 @@ public class main{
         for(int i = 1; i <= playerCount; i++){
             System.out.println("input username for player " + i + ":");
             newUsername = ask.next();
-            players.add(new Player(newUsername, 0, GameLogic.intitalLetters(letterCount)));   
+            players[i] = (new Player(newUsername, 0, GameLogic.intitalLetters(letterCount)));   
         }
         
     }
@@ -178,7 +177,7 @@ public class main{
             for(int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++){
                 GameLogic.paintBoard(gameBoard);
                 System.out.println("\u001B[0m");
-                GameLogic.askForWord(letterScore, ask, players.get(indexOfPlayer), letterCount);   
+                GameLogic.askForWord(letterScore, ask, players[indexOfPlayer], letterCount);   
             }
         }while(run);
     }
