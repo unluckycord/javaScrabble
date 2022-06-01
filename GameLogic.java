@@ -11,14 +11,14 @@ public class GameLogic {
         return wordStorage.wordbank.containsKey(word.toUpperCase());
     }
     
-    public static String intitalLetters(HashMap<Character, Integer>letterCount){
+    public static char[] intitalLetters(HashMap<Character, Integer>letterCount){
         // gives initial letters for players
         String playersLetters = "";
         for(int i = 0; i < 7; i++){
             playersLetters += GameLogic.randomLetter(letterCount);
         }
         System.out.println(" ");
-        return playersLetters;
+        return playersLetters.toCharArray();
     }
     /*
     public static int CheckPlayersLetters(String wordInput, Player playersLetters){
@@ -60,9 +60,18 @@ public class GameLogic {
     }
     */
 
+    public static String playersLetters(Player player){
+        String letters = "";
+        char[] storage = player.getLettersOwned();
+        for(int i = 0; i < player.getLettersOwned().length; i++){
+            letters += storage[i] ;
+        }
+        return letters;
+    }
+
     public static void askForWord(HashMap<Character, Integer> letterScore, Scanner ask, Player player, HashMap<Character, Integer> letterCount){
         int score = 0;
-        System.out.println(player.getUsername() +": "+ player.getLettersOwned());
+        System.out.println(player.getUsername() +": "+ playersLetters(player));
         System.out.println("input your word\n");
         String word = ask.next().toUpperCase();
         tempStorage = word.toCharArray();

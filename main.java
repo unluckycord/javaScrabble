@@ -167,9 +167,6 @@ public class main{
         initLetterCountAndScore();
         initPlayers(ask);
         initBoard();
-        //for(int i = 0; i < playerCount; i++){
-        //    GameLogic.intitalLetters(letterCount);
-        //}
     }
 
     public static void main(String[] args) throws IOException {

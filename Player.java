@@ -3,7 +3,7 @@ public class Player {
     
     private String username;
     private int score;
-    private String LettersOwned;
+    private char[] LettersOwned;
 
     public String getUsername(){
         return username;
@@ -11,21 +11,20 @@ public class Player {
     public int getScore(){
         return score;
     }
-    public String getLettersOwned(){
+    public char[] getLettersOwned(){
         return LettersOwned;
     }
-
     public static void setUsername(String newUsername, Player user){
         user.username = newUsername;
     }
     public void setScore(int newScore, Player user){
         user.score += newScore;
     }
-    public void setLettersOwned(String newLetters, Player user){
+    public void setLettersOwned(char[] newLetters, Player user){
         user.LettersOwned = newLetters;
     }
 
-    Player( String username, int score, String LettersOwned){
+    Player( String username, int score, char[] LettersOwned){
         this.username = username;
         this.score = score;
         this.LettersOwned = LettersOwned;
