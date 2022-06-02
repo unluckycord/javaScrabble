@@ -6,13 +6,13 @@ public class GameLogic {
     public static int total = 100;
     private static char[] tempStorage;
     private static String newLetters;
+
     // will compare user input to words in wordbank
     public static boolean wordComparison(String word){
         return wordStorage.wordbank.containsKey(word.toUpperCase());
     }
-    
+    //gives initial letters for players
     public static char[] intitalLetters(HashMap<Character, Integer>letterCount){
-        // gives initial letters for players
         String playersLetters = "";
         for(int i = 0; i < 7; i++){
             playersLetters += GameLogic.randomLetter(letterCount);
@@ -60,15 +60,17 @@ public class GameLogic {
     }
     */
 
+    // returns players letters as a string with some formating done
     public static String playersLetters(Player player){
         String letters = "";
         char[] storage = player.getLettersOwned();
         for(int i = 0; i < player.getLettersOwned().length; i++){
-            letters += storage[i] ;
+                letters += "[ "+storage[i]+ " ]" ;
         }
         return letters;
     }
 
+    //asks for a user word, still needs to be worked on
     public static void askForWord(HashMap<Character, Integer> letterScore, Scanner ask, Player player, HashMap<Character, Integer> letterCount){
         int score = 0;
         System.out.println(player.getUsername() +": "+ playersLetters(player));
@@ -130,10 +132,11 @@ public class GameLogic {
         bag.put(random, bag.get(random)-1);
         return random;
     }
+    //renders the board
     public static void paintBoard(String[][] board){
         for(int i = 0; i < 16; i++){
             for(int f = 0; f < 16; f++){
-                System.out.print(board[f][i] + "  ");
+                System.out.print(board[f][i] + " ");
             }
             System.out.println();
             System.out.println();

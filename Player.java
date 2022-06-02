@@ -1,6 +1,7 @@
 public class Player {
-    //TOTAL LETTERS = 100
-    
+    // this is a player object that has a username, score and letters
+
+
     private String username;
     private int score;
     private char[] LettersOwned;
