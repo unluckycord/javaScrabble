@@ -126,10 +126,11 @@ public class main{
         String newUsername = "";
         System.out.println("How many players are playing? (must be 1-4)");
         playerCount = ask.nextInt();
+        players = new Player[playerCount];
         for(int i = 1; i <= playerCount; i++){
             System.out.println("input username for player " + i + ":");
             newUsername = ask.next();
-            players[i] = (new Player(newUsername, 0, GameLogic.intitalLetters(letterCount)));   
+            players[i-1] = (new Player(newUsername, 0, GameLogic.intitalLetters(letterCount)));   
         }
         
     }
