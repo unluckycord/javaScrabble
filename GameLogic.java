@@ -71,7 +71,7 @@ public class GameLogic {
     }
 
     //asks for a user word, still needs to be worked on
-    public static void askForWord(HashMap<Character, Integer> letterScore, Scanner ask, Player player, HashMap<Character, Integer> letterCount){
+    public static void askForWord(HashMap<Character, Integer> letterScore, HashMap<Character, Integer> letterCount, Scanner ask, Player player){
         int score = 0;
         System.out.println(player.getUsername() +": "+ playersLetters(player));
         System.out.println("input your word\n");

@@ -179,7 +179,7 @@ public class main{
             for(int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++){
                 GameLogic.paintBoard(gameBoard);
                 System.out.println("\u001B[0m");
-                GameLogic.askForWord(letterScore, ask, players[indexOfPlayer], letterCount);   
+                GameLogic.askForWord(letterScore, letterCount ,ask, players[indexOfPlayer]);   
             }
         }while(run);
     }
