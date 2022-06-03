@@ -23,7 +23,7 @@ public class Board {
         // left value is x right value is y
 
         // triple word scores
-        gameBoard[1][1] = "\u001B[33m[t w]";
+        gameBoard[1][1] = AnsiColors.YELLOW +"[t w]";
         gameBoard[8][1] = "\u001B[33m[t w]";
         gameBoard[15][1] = "\u001B[33m[t w]";
         gameBoard[1][8] = "\u001B[33m[t w]";
@@ -93,5 +93,17 @@ public class Board {
         // star in the middle
         gameBoard[8][8] = "[\u001B[32m ★ \u001B[37m]";
 
+    }
+    @Override
+    public String toString(){
+        String board = "";
+        for(int i = 0; i < 16; i++){
+            for(int f = 0; f < 16; f++){
+                board += gameBoard[f][i] + " ";
+            }
+            board += "\n\n\n";
+        }
+
+        return board;
     }
 }

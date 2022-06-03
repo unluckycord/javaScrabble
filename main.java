@@ -1,4 +1,6 @@
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Scanner;
 
 /*
 
@@ -14,6 +16,7 @@ public class main {
     private static HashMap<Character, Integer> letterCount = new HashMap<Character, Integer>();
     private static HashMap<Character, Integer> letterScore = new HashMap<Character, Integer>();
     private static Player[] players;
+    public static Board gameBoard; 
 
     public static void clear() {
         System.out.println("\033[H\033[2J");
@@ -85,7 +88,7 @@ public class main {
         initLetterCountAndScore();
         initPlayers(ask);
         clear();
-        Board gameBoard = new Board();
+        gameBoard = new Board();
     }
 
     public static void main(String[] args) throws IOException {
@@ -95,8 +98,7 @@ public class main {
         // main loop for game
         do {
             for (int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++) {
-                GameLogic.paintBoard(gameBoard);
-                System.out.println("\u001B[0m");
+                System.out.println(gameBoard);
                 GameLogic.askForWord(letterScore, letterCount, ask, players[indexOfPlayer]);
             }
         } while (run);
