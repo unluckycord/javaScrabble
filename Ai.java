@@ -54,7 +54,7 @@ public class Ai {
  * 
  * public class AiNames {
  * public static void main(String[] args) {
- * String[] peoples = {"Bob","Jill","Tom","Brandon"};
+ * String[] peoples = {"Alphonse","Beatrice","Catherine","Devon"};
  * List<String> names = Arrays.asList(peoples);
  * Collections.shuffle(names);
  * for (String name : names) {
