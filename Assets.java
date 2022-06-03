@@ -16,5 +16,6 @@ public class Assets {
                 line = br.readLine();
             }
         }
+        // put all the Ainames here
     }
 }
