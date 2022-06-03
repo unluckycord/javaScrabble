@@ -1,44 +1,45 @@
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
+
 /*
 
 ADD WAY FOR PLAYERS TO HAVE THIER OWN LETTERS
 
 
 */
-public class main{
+public class main {
     private static int playerCount = 0;
-    
-    //test
+
+    // test
     public static boolean run = true;
     private static HashMap<Character, Integer> letterCount = new HashMap<Character, Integer>();
     private static HashMap<Character, Integer> letterScore = new HashMap<Character, Integer>();
     private static Player[] players;
     private static String[][] gameBoard = new String[16][16];
 
-    public static void clear(){
+    public static void clear() {
         System.out.println("\033[H\033[2J");
     }
 
-    public static void initBoard(){
+    public static void initBoard() {
         Board Board = new Board(gameBoard);
-        for(int i = 0; i < 10; i++){
-            gameBoard[0][i] = "\u001B[35m"+i+"  ";
-            gameBoard[i][0] = "\u001B[35m"+i +"    ";
+        for (int i = 0; i < 10; i++) {
+            gameBoard[0][i] = "\u001B[35m" + i + "  ";
+            gameBoard[i][0] = "\u001B[35m" + i + "    ";
         }
-        for(int i = 10; i < 16; i++){
-            gameBoard[0][i] = "\u001B[35m"+i;
-            gameBoard[i][0] = "\u001B[35m"+i +"   ";
+        for (int i = 10; i < 16; i++) {
+            gameBoard[0][i] = "\u001B[35m" + i;
+            gameBoard[i][0] = "\u001B[35m" + i + "   ";
         }
-        for(int i = 1; i< 16; i++){
-            for(int f = 1; f < 16; f++){
+        for (int i = 1; i < 16; i++) {
+            for (int f = 1; f < 16; f++) {
                 gameBoard[f][i] = "\u001B[37m[   ]";
             }
         }
         // left value is x right value is y
 
-        //triple word scores
+        // triple word scores
         gameBoard[1][1] = "\u001B[33m[t w]";
         gameBoard[8][1] = "\u001B[33m[t w]";
         gameBoard[15][1] = "\u001B[33m[t w]";
@@ -48,7 +49,7 @@ public class main{
         gameBoard[8][15] = "\u001B[33m[t w]";
         gameBoard[15][15] = "\u001B[33m[t w]";
 
-        //double word score
+        // double word score
         gameBoard[2][2] = "\u001B[31m[d w]";
         gameBoard[14][2] = "\u001B[31m[d w]";
         gameBoard[3][3] = "\u001B[31m[d w]";
@@ -66,7 +67,7 @@ public class main{
         gameBoard[5][11] = "\u001B[31m[d w]";
         gameBoard[11][11] = "\u001B[31m[d w]";
 
-        //triple letter score
+        // triple letter score
         gameBoard[6][2] = "\u001B[34m[t l]";
         gameBoard[10][2] = "\u001B[34m[t l]";
         gameBoard[2][6] = "\u001B[34m[t l]";
@@ -79,8 +80,8 @@ public class main{
         gameBoard[14][10] = "\u001B[34m[t l]";
         gameBoard[6][14] = "\u001B[34m[t l]";
         gameBoard[10][14] = "\u001B[34m[t l]";
-        
-        //double letter score
+
+        // double letter score
         gameBoard[4][1] = "\u001B[36m[d l]";
         gameBoard[12][1] = "\u001B[36m[d l]";
         gameBoard[7][3] = "\u001B[36m[d l]";
@@ -106,50 +107,53 @@ public class main{
         gameBoard[4][15] = "\u001B[36m[d l]";
         gameBoard[12][15] = "\u001B[36m[d l]";
 
-        
-        //star in the middle
-        gameBoard[8][8] = "[\u001B[32m ★ \u001B[37m]";        
-        
-        
+        // star in the middle
+        gameBoard[8][8] = "[\u001B[32m ★ \u001B[37m]";
+
     }
-    public static void initLetterCountAndScore(){
+
+    public static void initLetterCountAndScore() {
         // initializes our letter count for our bag
-        for(char start = 'A'; start <= 'Z'; start++){
-            letterCount.put(start, Letters.valueOf(""+start).getCount());
-            letterScore.put(start, Letters.valueOf(""+start).getScore());
+        for (char start = 'A'; start <= 'Z'; start++) {
+            letterCount.put(start, Letters.valueOf("" + start).getCount());
+            letterScore.put(start, Letters.valueOf("" + start).getScore());
         }
         letterCount.put(' ', Letters.BLANK.getCount());
         letterScore.put(' ', Letters.BLANK.getScore());
     }
-    
-    public static void initPlayers(Scanner ask){
+
+    public static void initPlayers(Scanner ask) {
         String newUsername = "";
         System.out.println("How many players are playing? (must be 1-4)");
         playerCount = ask.nextInt();
         players = new Player[playerCount];
-        for(int i = 1; i <= playerCount; i++){
+        for (int i = 1; i <= playerCount; i++) {
             System.out.println("input username for player " + i + ":");
             newUsername = ask.next();
-            players[i-1] = (new Player(newUsername, 0, GameLogic.intitalLetters(letterCount)));   
+            players[i - 1] = (new Player(newUsername, 0, GameLogic.intitalLetters(letterCount)));
         }
-        
+
     }
-    
-    public static int initMenu(Scanner ask) throws IOException{
+
+    public static void initAi(Scanner ask) {
+
+    }
+
+    public static int initMenu(Scanner ask) throws IOException {
         Assets.loadAssets();
         String input;
-        for(int i = 0; i < Assets.logo.size(); i++){
+        for (int i = 0; i < Assets.logo.size(); i++) {
             System.out.println(Assets.logo.get(i));
         }
         System.out.println("Welcome to Scrabble! Press A to start, R to veiw rules, E to exit");
-        while(true){
+        while (true) {
             input = ask.nextLine();
-            switch(input.toUpperCase()){
+            switch (input.toUpperCase()) {
                 case "A":
                     return 0;
                 case "R":
-                // INSERT RULES HERE
-                
+                    // INSERT RULES HERE
+
                     System.out.println("rules");
                     break;
                 case "E":
@@ -160,8 +164,9 @@ public class main{
             }
         }
     }
-    public static void Startgame(Scanner ask) throws IOException{
-        //initilizes players, words and board
+
+    public static void Startgame(Scanner ask) throws IOException {
+        // initilizes players, words and board
         initMenu(ask);
         wordStorage.loadingWords();
         initLetterCountAndScore();
@@ -174,17 +179,18 @@ public class main{
         Scanner ask = new Scanner(System.in);
         clear();
         Startgame(ask);
-        //main loop for game
-        do{
-            for(int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++){
+        // main loop for game
+        do {
+            for (int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++) {
                 GameLogic.paintBoard(gameBoard);
                 System.out.println("\u001B[0m");
-                GameLogic.askForWord(letterScore, letterCount ,ask, players[indexOfPlayer]);   
+                GameLogic.askForWord(letterScore, letterCount, ask, players[indexOfPlayer]);
             }
-        }while(run);
+        } while (run);
     }
+
     // invoke this method to test code out
-    public static void debugging(){
-        
+    public static void debugging() {
+
     }
 }
