@@ -1,4 +1,4 @@
-public class AnsiColors {
+public enum AnsiColors {
     // Reset
     RESET("\033[0m"),  // Text Reset
  
