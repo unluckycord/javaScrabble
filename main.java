@@ -136,7 +136,13 @@ public class main {
     }
 
     public static void initAi(Scanner ask) {
-
+        /*
+         * for (int i = 1; i <= AiCount; i++) {
+         * newUsername = random username
+         * Ai[i - 1] = (new Player(newUsername, 0,
+         * GameLogic.intitalLetters(letterCount)));
+         * }
+         */
     }
 
     public static int initMenu(Scanner ask) throws IOException {

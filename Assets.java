@@ -16,6 +16,34 @@ public class Assets {
                 line = br.readLine();
             }
         }
-        // put all the Ainames here
+        /*
+         * All the Ainames are here
+         * Alphonse
+         * Beatrice
+         * Cathrine
+         * Devon
+         * Ethan
+         * Francis
+         * Grandma
+         * Heather
+         * Ivan
+         * Joseph
+         * Kristen
+         * Luis
+         * Marigold
+         * Nolan
+         * Orion
+         * Patrick
+         * Queen
+         * Riley
+         * Samantha
+         * Trevor
+         * Ulysses
+         * Venom
+         * Wyatt
+         * Xander
+         * Yaeger
+         * Zain
+         */
     }
 }
