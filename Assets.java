@@ -49,7 +49,7 @@ public class Assets {
     /*
      * protected static void loadAssets() throws IOException {
      * try (BufferedReader br = new BufferedReader(new
-     * FileReader("Assets/Ainames.ans"))) {
+     * FileReader("Assets/Ainames.txt"))) {
      * String line = br.readLine();
      * while (line != null) {
      * Ainames.add(line);
