@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
@@ -6,6 +7,10 @@ public class GameLogic {
     public static int total = 100;
     private static char[] tempStorage;
     private static String newLetters;
+    private static ArrayList<Integer> y = new ArrayList<Integer>();
+    private static ArrayList<Integer> x = new ArrayList<Integer>();
+    private static ArrayList<Character> letter = new ArrayList<Character>();
+    private static String word;
 
     // will compare user input to words in wordbank
     public static boolean wordComparison(String word){
@@ -65,42 +70,54 @@ public class GameLogic {
         String letters = "";
         char[] storage = player.getLettersOwned();
         for(int i = 0; i < player.getLettersOwned().length; i++){
-                letters += "[ "+storage[i]+ " ]" ;
+            letters += "[ "+storage[i]+ " ]" ;
         }
         return letters;
     }
 
-    //asks for a user word, still needs to be worked on
-    public static void askForWord(HashMap<Character, Integer> letterScore, HashMap<Character, Integer> letterCount, Scanner ask, Player player){
-        int score = 0;
-        System.out.println(player.getUsername() +": "+ playersLetters(player));
-        System.out.println("input your word\n");
-        String word = ask.next().toUpperCase();
-        tempStorage = word.toCharArray();
-        for(int i = 0; i< tempStorage.length; i++){
-            if(tempStorage[i] == '*'){
-                System.out.println("please pick a blank letter");
-                tempStorage[i] = ask.next().toUpperCase().charAt(0);
-            }
-        }
-        word = String.valueOf(tempStorage).toUpperCase();
-        if(word != "stopgame"){
-            //if(CheckPlayersLetters(word, player) == word.toCharArray().length){
-                if(GameLogic.wordComparison(word)){  
-                    for(int i = 0; i < tempStorage.length; i++){
-                        score += letterScore.get(tempStorage[i]);
-                    }
-                    player.setScore(score, player);
-                    //removeLettersPlayed(word, player, letterCount);
-                    System.out.println(player.getUsername() + ": " + player.getScore());
-                }else{
-                    System.out.println("try again, not a valid word");
-                }
-            /*}else{
-                System.out.println("not enough letters or your letter played isn't in your letter bank, try again");
+    public static void askForLetterAndPos(Player player, ArrayList<Character> letter, ArrayList<Integer> x, ArrayList<Integer> y, Scanner ask){
+            String letterInput;
+            System.out.println(player.getUsername() +": "+ playersLetters(player));
+            System.out.println("input your Letter and an x and y pos to play, type done to put word\n");
+            letterInput = ask.next().toUpperCase();
+            /*
+            if(letterInput == "*"){
+                System.out.println("please input a letter");
+                letterInput = ask.next().toUpperCase();
             }*/
+            letter.add(letterInput.charAt(0));
+            x.add(ask.nextInt());
+            y.add(ask.nextInt());
+
+    }
+    //asks for a user word, still needs to be worked on
+    public static void askForWord(HashMap<Character, Integer> letterScore, HashMap<Character, Integer> letterCount, Scanner ask, Player player, Board gameBoard){
+        x.clear();
+        y.clear();
+        letter.clear();
+        int score = 0;
+        word = "";
+        
+        askForLetterAndPos(player, letter, x, y, ask);
+        while(letter.get(letter.size()-1)!='.'){
+            askForLetterAndPos(player, letter, x, y, ask);
+        }
+        for(int i = 0; i < letter.size()-1; i++){
+            gameBoard.setSpace(letter.get(i), x.get(i), y.get(i));
+            word+=letter.get(i);
+        }
+        word = word.substring(0, letter.size()-1);
+        tempStorage = word.toCharArray();
+        
+        word = String.valueOf(tempStorage).toUpperCase();
+        if(GameLogic.wordComparison(word)){  
+            for(int i = 0; i < tempStorage.length; i++){
+                score += letterScore.get(tempStorage[i]);
+            }
+            player.setScore(score, player);
+            System.out.println(player.getUsername() + ": " + player.getScore());
         }else{
-            main.run = false;
+            System.out.println("try again, not a valid word");
         }
     }
 

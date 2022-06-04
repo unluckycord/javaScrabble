@@ -48,12 +48,13 @@ public class main {
         //System.out.println("How many Ai players will be present? (players + Ai must be less than 4)");
         //System.out.println("How difficult will (the named Ai) be? (Easy, Medium, or Hard)");
         //Make a code to assign each Ai their own difficulty rating
+        /*
         for (int i = 1; i <= AiCount; i++) {
             newUsername = random username
             //Select a name from Ainames.txt while removing the name from the list to prevent doubles
             Ai[i - 1] = (new Player(newUsername, 0, GameLogic.intitalLetters(letterCount)));
             //new ai (random number between 0 and Ainames.size()-1 , 0 , getletters)
-        }   
+        }  */ 
     }
 
     public static int initMenu(Scanner ask) throws IOException {
@@ -101,7 +102,7 @@ public class main {
         do {
             for (int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++) {
                 System.out.println(gameBoard);
-                GameLogic.askForWord(letterScore, letterCount, ask, players[indexOfPlayer]);
+                GameLogic.askForWord(letterScore, letterCount, ask, players[indexOfPlayer], gameBoard);
             }
         } while (run);
     }
