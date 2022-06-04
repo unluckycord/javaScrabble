@@ -32,7 +32,7 @@ public class Board {
             gameBoard[i][0] = AnsiColors.PURPLE.toString() + i + "    ";
         }
         for (int i = 10; i < 16; i++) {
-            gameBoard[0][i] = AnsiColors.PURPLE.toString() + i;
+            gameBoard[0][i] = AnsiColors.PURPLE.toString() + i +" ";
             gameBoard[i][0] = AnsiColors.PURPLE.toString() + i + "   ";
         }
         for (int i = 1; i < 16; i++) {
@@ -172,7 +172,7 @@ public class Board {
         doubleLetterScore[12][15] = true;
 
         // star in the middle
-        gameBoard[8][8] = AnsiColors.GREEN+" ★ "+ AnsiColors.WHITE;
+        gameBoard[8][8] = AnsiColors.GREEN+"[ ★ ]"+ AnsiColors.WHITE;
 
     }
     @Override
