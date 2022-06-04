@@ -9,6 +9,9 @@ public class Board {
     public String[][] getGameBoard(){
         return gameBoard;
     }
+    public String getLetter(int x, int y){
+        return gameBoard[x][y].substring(9,10);
+    }
 
     public boolean setSpace(char letter, int x, int y){
         if(x < 16 && y < 16 && x > 0 && y > 0 && !placedTile[x][y]){

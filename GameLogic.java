@@ -68,6 +68,7 @@ public class GameLogic {
                 gameBoard.setSpace(letter.get(i), x.get(i), y.get(i));
             }else{
                 System.out.println("space already taken");
+                askForWord(letterScore, letterCount, ask, player, gameBoard);
                 return 0;
             }
             word+=letter.get(i);

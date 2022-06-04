@@ -99,7 +99,7 @@ public class main {
         clear();
         Startgame(ask);
         // main loop for game
-        do {
+        do{
             for (int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++) {
                 System.out.println(gameBoard);
                 GameLogic.askForWord(letterScore, letterCount, ask, players[indexOfPlayer], gameBoard);
