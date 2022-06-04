@@ -51,6 +51,7 @@ public class main {
             newUsername = random username
             Ai[i - 1] = (new Player(newUsername, 0,
             GameLogic.intitalLetters(letterCount)));
+            //new ai (random number between 0 and Ainames.size()-1 , 0 , getletters)
         }
         
     }
