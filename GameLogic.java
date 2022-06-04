@@ -25,45 +25,6 @@ public class GameLogic {
         System.out.println(" ");
         return playersLetters.toCharArray();
     }
-    /*
-    public static int CheckPlayersLetters(String wordInput, Player playersLetters){
-        int amountOfTrue = 0;
-        char[] wordInputStorage = wordInput.toCharArray();
-        char[] playersLettersStorage = playersLetters.getLettersOwned().toCharArray();
-        for(int i = 0; i < playersLettersStorage.length; i++){
-            for(int f = 0; f < wordInputStorage.length; f++){
-                if(wordInputStorage[f] == playersLettersStorage[i]){
-                    amountOfTrue++;
-                }
-            }
-        }
-        return amountOfTrue;
-    }
-    
-
-    NEEDS TO BE FIXED
-
-
-    public static void removeLettersPlayed(String wordInput, Player player, HashMap<Character, Integer> letterCount){
-        int lettersRemoved = 0;
-        newLetters = "";
-        char[] wordInputStorage = wordInput.toCharArray();
-        char[] playersLettersStorage = player.getLettersOwned().toCharArray();
-        for(int i = 0; i < playersLettersStorage.length; i++){
-            for(int f = 0; f < wordInputStorage.length; f++){
-                if(wordInputStorage[f] == playersLettersStorage[i]){
-                    playersLettersStorage[i] = ' ';
-                    lettersRemoved++;
-                }
-                newLetters += playersLettersStorage[i];
-            }
-        }
-        for(int i = 0; i < lettersRemoved; i++){
-            newLetters +=randomLetter(letterCount);
-        }
-        player.setLettersOwned(newLetters, player);
-    }
-    */
 
     // returns players letters as a string with some formating done
     public static String playersLetters(Player player){
@@ -91,7 +52,7 @@ public class GameLogic {
 
     }
     //asks for a user word, still needs to be worked on
-    public static void askForWord(HashMap<Character, Integer> letterScore, HashMap<Character, Integer> letterCount, Scanner ask, Player player, Board gameBoard){
+    public static int askForWord(HashMap<Character, Integer> letterScore, HashMap<Character, Integer> letterCount, Scanner ask, Player player, Board gameBoard){
         x.clear();
         y.clear();
         letter.clear();
@@ -103,7 +64,12 @@ public class GameLogic {
             askForLetterAndPos(player, letter, x, y, ask);
         }
         for(int i = 0; i < letter.size()-1; i++){
-            gameBoard.setSpace(letter.get(i), x.get(i), y.get(i));
+            if(gameBoard.setSpace(letter.get(i), x.get(i), y.get(i))){
+                gameBoard.setSpace(letter.get(i), x.get(i), y.get(i));
+            }else{
+                System.out.println("space already taken");
+                return 0;
+            }
             word+=letter.get(i);
         }
         word = word.substring(0, letter.size()-1);
@@ -119,6 +85,7 @@ public class GameLogic {
         }else{
             System.out.println("try again, not a valid word");
         }
+        return 0;
     }
 
     // random letter bag
