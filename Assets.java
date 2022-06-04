@@ -17,7 +17,7 @@ public class Assets {
             }
         }
         /*
-         * All the Ainames are here
+         * Ainames we can work with are here
          * Alphonse
          * Beatrice
          * Cathrine
@@ -46,4 +46,16 @@ public class Assets {
          * Zain
          */
     }
+    /*
+     * protected static void loadAssets() throws IOException {
+     * try (BufferedReader br = new BufferedReader(new
+     * FileReader("Assets/Ainames.ans"))) {
+     * String line = br.readLine();
+     * while (line != null) {
+     * Ainames.add(line);
+     * line = br.readLine();
+     * }
+     * }
+     * }
+     */
 }
