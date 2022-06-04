@@ -16,7 +16,7 @@ public class main {
     private static HashMap<Character, Integer> letterCount = new HashMap<Character, Integer>();
     private static HashMap<Character, Integer> letterScore = new HashMap<Character, Integer>();
     private static Player[] players;
-    public static Board gameBoard; 
+    public static Board gameBoard;
 
     public static void clear() {
         System.out.println("\033[H\033[2J");
@@ -46,13 +46,13 @@ public class main {
     }
 
     public static void initAi(Scanner ask) {
-        /*
-         * for (int i = 1; i <= AiCount; i++) {
-         * newUsername = random username
-         * Ai[i - 1] = (new Player(newUsername, 0,
-         * GameLogic.intitalLetters(letterCount)));
-         * }
-         */
+        
+        for (int i = 1; i <= AiCount; i++) {
+            newUsername = random username
+            Ai[i - 1] = (new Player(newUsername, 0,
+            GameLogic.intitalLetters(letterCount)));
+        }
+        
     }
 
     public static int initMenu(Scanner ask) throws IOException {
@@ -84,6 +84,7 @@ public class main {
     public static void Startgame(Scanner ask) throws IOException {
         // initilizes players, words and board
         initMenu(ask);
+        Assets.loadAinames();
         wordStorage.loadingWords();
         initLetterCountAndScore();
         initPlayers(ask);

@@ -16,46 +16,15 @@ public class Assets {
                 line = br.readLine();
             }
         }
-        /*
-         * Ainames we can work with are here
-         * Alphonse
-         * Beatrice
-         * Cathrine
-         * Devon
-         * Ethan
-         * Francis
-         * Grandma
-         * Heather
-         * Ivan
-         * Joseph
-         * Kristen
-         * Luis
-         * Marigold
-         * Nolan
-         * Orion
-         * Patrick
-         * Queen
-         * Riley
-         * Samantha
-         * Trevor
-         * Ulysses
-         * Venom
-         * Wyatt
-         * Xander
-         * Yaeger
-         * Zain
-         */
     }
-    /*
-     * protected static void loadAssets() throws IOException {
-     * try (BufferedReader br = new BufferedReader(new
-     * FileReader("Assets/Ainames.txt"))) {
-     * String line = br.readLine();
-     * while (line != null) {
-     * Ainames.add(line);
-     * line = br.readLine();
-     * }
-     * }
-     * }
-     */
+
+    protected static void loadAinames() throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader("Assets/Ainames.txt"))) {
+            String line = br.readLine();
+            while (line != null) {
+                Ainames.add(line);
+                line = br.readLine();
+            }
+        }
+    }
 }
