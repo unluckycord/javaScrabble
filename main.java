@@ -42,18 +42,18 @@ public class main {
             newUsername = ask.next();
             players[i - 1] = (new Player(newUsername, 0, GameLogic.intitalLetters(letterCount)));
         }
-
     }
 
     public static void initAi(Scanner ask) {
-        
+        //System.out.println("How many Ai players will be present? (players + Ai must be less than 4)");
+        //System.out.println("How difficult will (the named Ai) be? (Easy, Medium, or Hard)");
+        //Make a code to assign each Ai their own difficulty rating
         for (int i = 1; i <= AiCount; i++) {
             newUsername = random username
-            Ai[i - 1] = (new Player(newUsername, 0,
-            GameLogic.intitalLetters(letterCount)));
+            //Select a name from Ainames.txt while removing the name from the list to prevent doubles
+            Ai[i - 1] = (new Player(newUsername, 0, GameLogic.intitalLetters(letterCount)));
             //new ai (random number between 0 and Ainames.size()-1 , 0 , getletters)
-        }
-        
+        }   
     }
 
     public static int initMenu(Scanner ask) throws IOException {
