@@ -119,7 +119,11 @@ public class main {
         do {
             for (int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++) {
                 System.out.println(gameBoard);
-                GameLogic.askForWord(letterScore, letterCount, ask, players[indexOfPlayer], gameBoard);
+                GameLogic.askForWord(letterScore, letterCount, ask, players[indexOfPlayer], gameBoard, ais[0]);
+            }
+            for (int indexOfAi = 0; indexOfAi < AiCount; indexOfAi++) {
+                System.out.println(gameBoard);
+                GameLogic.askForWord(letterScore, letterCount, ask, players[0], gameBoard, ais[indexOfAi]);
             }
         } while (run);
     }
