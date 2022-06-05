@@ -61,6 +61,8 @@ public class main {
             ais[i] = (new Ai(newUsername, 0, GameLogic.intitalLetters(letterCount), AiDifficulty));
         }
 
+        // Create a difficulty setting easy medium hard and specifics
+
         // Make a code to assign each Ai their own difficulty rating
         /*
          * for (int i = 1; i <= AiCount; i++) {
@@ -122,10 +124,13 @@ public class main {
                 System.out.println(gameBoard);
                 GameLogic.askForWord(letterScore, letterCount, ask, players[indexOfPlayer], gameBoard, ais[0]);
             }
-            for (int indexOfAi = 0; indexOfAi < AiCount; indexOfAi++) {
-                System.out.println(gameBoard);
-                GameLogic.askForWord(letterScore, letterCount, ask, players[0], gameBoard, ais[indexOfAi]);
-            }
+            /*
+             * for (int indexOfAi = 0; indexOfAi < AiCount; indexOfAi++) {
+             * System.out.println(gameBoard);
+             * GameLogic.askForWord(letterScore, letterCount, ask, players[0], gameBoard,
+             * ais[indexOfAi]);
+             * }
+             */
         } while (run);
     }
 
