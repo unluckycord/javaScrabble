@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 
 /*
@@ -10,12 +11,13 @@ ADD WAY FOR PLAYERS TO HAVE THIER OWN LETTERS
 */
 public class main {
     private static int playerCount = 0;
-
+    private static int AiCount = 0;
     // test
     public static boolean run = true;
     private static HashMap<Character, Integer> letterCount = new HashMap<Character, Integer>();
     private static HashMap<Character, Integer> letterScore = new HashMap<Character, Integer>();
     private static Player[] players;
+    private static Ai[] ais;
     public static Board gameBoard;
 
     public static void clear() {
@@ -45,16 +47,30 @@ public class main {
     }
 
     public static void initAi(Scanner ask) {
-        //System.out.println("How many Ai players will be present? (players + Ai must be less than 4)");
-        //System.out.println("How difficult will (the named Ai) be? (Easy, Medium, or Hard)");
-        //Make a code to assign each Ai their own difficulty rating
-        /*
+        String AiDifficulty = "";
+        String newUsername = "";
+        Random rand = new Random();
+        System.out.println("How many Ai players will be present? (players + Ai must be less than 4)");
+        AiCount = ask.nextInt();
         for (int i = 1; i <= AiCount; i++) {
-            newUsername = random username
-            //Select a name from Ainames.txt while removing the name from the list to prevent doubles
-            Ai[i - 1] = (new Player(newUsername, 0, GameLogic.intitalLetters(letterCount)));
-            //new ai (random number between 0 and Ainames.size()-1 , 0 , getletters)
-        }  */ 
+            newUsername = Assets.Ainames.get(rand.nextInt(26));
+            System.out.println("How difficult will (the named Ai) be? (Easy, Medium, or Hard)");
+
+            AiDifficulty = ask.next();
+            ais[i - 1] = (new Ai(newUsername, 0, GameLogic.intitalLetters(letterCount), AiDifficulty));
+        }
+
+        // Make a code to assign each Ai their own difficulty rating
+        /*
+         * for (int i = 1; i <= AiCount; i++) {
+         * newUsername = random username
+         * //Select a name from Ainames.txt while removing the name from the list to
+         * prevent doubles
+         * Ai[i - 1] = (new Player(newUsername, 0,
+         * GameLogic.intitalLetters(letterCount)));
+         * //new ai (random number between 0 and Ainames.size()-1 , 0 , getletters)
+         * }
+         */
     }
 
     public static int initMenu(Scanner ask) throws IOException {
@@ -90,6 +106,7 @@ public class main {
         wordStorage.loadingWords();
         initLetterCountAndScore();
         initPlayers(ask);
+        initAi(ask);
         clear();
         gameBoard = new Board();
     }
@@ -99,7 +116,7 @@ public class main {
         clear();
         Startgame(ask);
         // main loop for game
-        do{
+        do {
             for (int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++) {
                 System.out.println(gameBoard);
                 GameLogic.askForWord(letterScore, letterCount, ask, players[indexOfPlayer], gameBoard);

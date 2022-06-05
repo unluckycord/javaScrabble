@@ -4,6 +4,7 @@ public class Ai {
     private String username;
     private int score;
     private char[] LettersOwned;
+    private String AiDifficulty;
 
     public String getUsername() {
         return username;
@@ -29,10 +30,15 @@ public class Ai {
         user.LettersOwned = newLetters;
     }
 
-    Ai(String username, int score, char[] LettersOwned) {
+    public void setAiDifficulty(String AiDifficulty, Ai user) {
+        user.AiDifficulty = AiDifficulty;
+    }
+
+    Ai(String username, int score, char[] LettersOwned, String AiDifficulty) {
         this.username = username;
         this.score = score;
         this.LettersOwned = LettersOwned;
+        this.AiDifficulty = AiDifficulty;
     }
 
 }
