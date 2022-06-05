@@ -39,7 +39,7 @@ public class GameLogic {
     ArrayList<Integer> x, ArrayList<Integer> y, Scanner ask) {
         String letterInput;
         System.out.println(player.getUsername() + ": " + playersLetters(player));
-        System.out.println("input your Letter and an x and y pos to play, type done to put word\n");
+        System.out.println("input your Letter, an x and y pos to play(seperated by a new line), type . to put word\n");
         letterInput = ask.next().toUpperCase();
         /*
          * if(letterInput == "*"){
