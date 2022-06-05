@@ -12,6 +12,30 @@ public class Board {
     public String getLetter(int x, int y){
         return gameBoard[x][y].substring(9,10);
     }
+    public boolean getTripleWordScore(int x, int y){
+        return tripleWordScore[x][y];
+    }
+    public boolean getDoubleWordScore(int x, int y){
+        return doubleWordScore[x][y];
+    }
+    public boolean getTripleLetterScore(int x, int y){
+        return tripleLetterScore[x][y];
+    }
+    public boolean getDoubleLetterScore(int x, int y){
+        return doubleLetterScore[x][y];
+    }
+    public void setTripleWordScore(int x, int y, boolean newValue){
+        tripleWordScore[x][y] = newValue;
+    }
+    public void setDoubleWordScore(int x, int y, boolean newValue){
+        doubleWordScore[x][y] = newValue;
+    }
+    public void setTripleLetterScore(int x, int y, boolean newValue){
+        tripleLetterScore[x][y] = newValue;
+    }
+    public void setDoubleLetterScore(int x, int y, boolean newValue){
+        doubleLetterScore[x][y] = newValue;
+    }
 
     public boolean setSpace(char letter, int x, int y){
         if(x < 16 && y < 16 && x > 0 && y > 0 && !placedTile[x][y]){

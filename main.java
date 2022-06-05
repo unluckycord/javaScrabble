@@ -21,7 +21,7 @@ public class main {
     public static Board gameBoard;
 
     public static void clear() {
-        System.out.println("\033[H\033[2J");
+        System.out.println("[H\033[2J");
     }
 
     public static void initLetterCountAndScore() {
@@ -57,23 +57,9 @@ public class main {
             newUsername = Assets.Ainames.get(rand.nextInt(26));
             System.out.println("How difficult will (the named Ai) be? (Easy, Medium, or Hard)");
 
-            AiDifficulty = ask.next();
+            AiDifficulty = ask.next().toUpperCase();
             ais[i] = (new Ai(newUsername, 0, GameLogic.intitalLetters(letterCount), AiDifficulty));
         }
-
-        // Create a difficulty setting easy medium hard and specifics
-
-        // Make a code to assign each Ai their own difficulty rating
-        /*
-         * for (int i = 1; i <= AiCount; i++) {
-         * newUsername = random username
-         * //Select a name from Ainames.txt while removing the name from the list to
-         * prevent doubles
-         * Ai[i - 1] = (new Player(newUsername, 0,
-         * GameLogic.intitalLetters(letterCount)));
-         * //new ai (random number between 0 and Ainames.size()-1 , 0 , getletters)
-         * }
-         */
     }
 
     public static int initMenu(Scanner ask) throws IOException {
@@ -113,25 +99,31 @@ public class main {
         clear();
         gameBoard = new Board();
     }
+    public static void PlayerLoop(Board gameBoard, HashMap<Character, Integer> letterScore, HashMap<Character, Integer> letterCount, Scanner ask, Player[] players){
+        for (int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++) {
+            System.out.println(gameBoard);
+            GameLogic.playerMove(letterScore, letterCount, ask, players[indexOfPlayer], gameBoard);
+        }
+    }
+    public static void AiLoop(Board gameBoard, HashMap<Character, Integer> letterScore, HashMap<Character, Integer> letterCount, Ai[] ais){
+        for (int indexOfAi = 0; indexOfAi < AiCount; indexOfAi++) {
+            System.out.println(gameBoard);
+            GameLogic.AiLogic(letterScore, letterCount, ais[indexOfAi] ,gameBoard);
+        }
+    }
 
     public static void main(String[] args) throws IOException {
         Scanner ask = new Scanner(System.in);
         clear();
         Startgame(ask);
         // main loop for game
-        do {
-            for (int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++) {
-                System.out.println(gameBoard);
-                GameLogic.askForWord(letterScore, letterCount, ask, players[indexOfPlayer], gameBoard, ais[0]);
+        do{
+            PlayerLoop(gameBoard, letterScore, letterCount, ask, players);
+            //checks to see if there are any ais, if there are none it skips over it
+            if(ais.length > 0){
+                AiLoop(gameBoard, letterScore, letterCount, ais);
             }
-            /*
-             * for (int indexOfAi = 0; indexOfAi < AiCount; indexOfAi++) {
-             * System.out.println(gameBoard);
-             * GameLogic.askForWord(letterScore, letterCount, ask, players[0], gameBoard,
-             * ais[indexOfAi]);
-             * }
-             */
-        } while (run);
+        }while(run);
     }
 
     // invoke this method to test code out
