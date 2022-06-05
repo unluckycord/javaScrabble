@@ -58,7 +58,7 @@ public class GameLogic {
     // asks for a user word, still needs to be worked on
     public static int askForWord(HashMap<Character, Integer> letterScore,
             HashMap<Character, Integer> letterCount, Scanner ask, Player player,
-            Board gameBoard, Ai[] ais) {
+            Board gameBoard, Ai ai) {
         x.clear();
         y.clear();
         letter.clear();
@@ -74,7 +74,7 @@ public class GameLogic {
                 gameBoard.setSpace(letter.get(i), x.get(i), y.get(i));
             } else {
                 System.out.println("space already taken");
-                askForWord(letterScore, letterCount, ask, player, gameBoard, ais);
+                askForWord(letterScore, letterCount, ask, player, gameBoard, ai);
                 return 0;
             }
             word += letter.get(i);
