@@ -52,12 +52,13 @@ public class main {
         Random rand = new Random();
         System.out.println("How many Ai players will be present? (players + Ai must be less than 4)");
         AiCount = ask.nextInt();
-        for (int i = 1; i <= AiCount; i++) {
+        ais = new Ai[AiCount];
+        for (int i = 0; i < AiCount; i++) {
             newUsername = Assets.Ainames.get(rand.nextInt(26));
             System.out.println("How difficult will (the named Ai) be? (Easy, Medium, or Hard)");
 
             AiDifficulty = ask.next();
-            ais[i - 1] = (new Ai(newUsername, 0, GameLogic.intitalLetters(letterCount), AiDifficulty));
+            ais[i] = (new Ai(newUsername, 0, GameLogic.intitalLetters(letterCount), AiDifficulty));
         }
 
         // Make a code to assign each Ai their own difficulty rating
