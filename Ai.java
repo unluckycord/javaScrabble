@@ -17,8 +17,11 @@ public class Ai {
     public char[] getLettersOwned() {
         return LettersOwned;
     }
+    public String getAiDifficulty(){
+        return AiDifficulty;
+    }
 
-    public static void setUsername(String newUsername, Ai user) {
+    public void setUsername(String newUsername, Ai user) {
         user.username = newUsername;
     }
 
