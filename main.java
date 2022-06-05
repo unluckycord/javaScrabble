@@ -76,7 +76,7 @@ public class main {
                     return 0;
                 case "R":
                     // INSERT RULES HERE
-
+                    
                     System.out.println("rules");
                     break;
                 case "E":
