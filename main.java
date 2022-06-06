@@ -76,7 +76,7 @@ public class main {
                     return 0;
                 case "R":
                     // INSERT RULES HERE
-                    
+
                     System.out.println("rules");
                     break;
                 case "E":
@@ -99,16 +99,20 @@ public class main {
         clear();
         gameBoard = new Board();
     }
-    public static void PlayerLoop(Board gameBoard, HashMap<Character, Integer> letterScore, HashMap<Character, Integer> letterCount, Scanner ask, Player[] players){
+
+    public static void PlayerLoop(Board gameBoard, HashMap<Character, Integer> letterScore,
+            HashMap<Character, Integer> letterCount, Scanner ask, Player[] players) {
         for (int indexOfPlayer = 0; indexOfPlayer < playerCount; indexOfPlayer++) {
             System.out.println(gameBoard);
             GameLogic.playerMove(letterScore, letterCount, ask, players[indexOfPlayer], gameBoard);
         }
     }
-    public static void AiLoop(Board gameBoard, HashMap<Character, Integer> letterScore, HashMap<Character, Integer> letterCount, Ai[] ais){
+
+    public static void AiLoop(Board gameBoard, HashMap<Character, Integer> letterScore,
+            HashMap<Character, Integer> letterCount, Ai[] ais) {
         for (int indexOfAi = 0; indexOfAi < AiCount; indexOfAi++) {
             System.out.println(gameBoard);
-            GameLogic.AiLogic(letterScore, letterCount, ais[indexOfAi] ,gameBoard);
+            GameLogic.AiLogic(letterScore, letterCount, ais[indexOfAi], gameBoard);
         }
     }
 
@@ -117,13 +121,13 @@ public class main {
         clear();
         Startgame(ask);
         // main loop for game
-        do{
+        do {
             PlayerLoop(gameBoard, letterScore, letterCount, ask, players);
-            //checks to see if there are any ais, if there are none it skips over it
-            if(ais.length > 0){
+            // checks to see if there are any ais, if there are none it skips over it
+            if (ais.length > 0) {
                 AiLoop(gameBoard, letterScore, letterCount, ais);
             }
-        }while(run);
+        } while (run);
     }
 
     // invoke this method to test code out
