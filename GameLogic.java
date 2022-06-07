@@ -42,12 +42,6 @@ public class GameLogic {
         System.out.println(
                 "Input your letter first, x coordinate second, and y coordinate third. \nTo finish your turn, input a . and input any random number twice. \n");
         letterInput = ask.next().toUpperCase();
-        /*
-         * if(letterInput == "*"){
-         * System.out.println("please input a letter");
-         * letterInput = ask.next().toUpperCase();
-         * }
-         */
         letter.add(letterInput.charAt(0));
         x.add(ask.nextInt());
         y.add(ask.nextInt());
@@ -156,7 +150,6 @@ public class GameLogic {
                 newLetter = ask.next().toUpperCase().charAt(0);
                 letter.set(i,newLetter);
             }
-            System.out.println(letter);
             word += letter.get(i);
         }
         word = word.substring(0, letter.size() - 1);
