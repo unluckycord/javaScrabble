@@ -3,12 +3,6 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
-/*
-
-ADD WAY FOR PLAYERS TO HAVE THIER OWN LETTERS
-
-
-*/
 public class main {
     private static int playerCount = 0;
     private static int AiCount = 0;
