@@ -40,7 +40,7 @@ public class GameLogic {
         String letterInput;
         System.out.println(player.getUsername() + ": " + playersLetters(player));
         System.out.println(
-                "Input your letter first, x coordinate second, and y coordinate third. \nThen input a . and input seperate numbers twice. \n");
+                "Input your letter first, x coordinate second, and y coordinate third. \nTo finish your turn, input a . and input any random number twice. \n");
         letterInput = ask.next().toUpperCase();
         /*
          * if(letterInput == "*"){
