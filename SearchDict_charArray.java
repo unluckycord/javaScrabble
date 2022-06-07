@@ -99,7 +99,7 @@ public class SearchDict_charArray {
     public static void main(String args[]) {
         // Let the given dictionary be following
         Assets.loaddictionary();
-        String Dict[] = { dictionary.txt }
+        String Dict[] = ("dictionary.txt");
 
         // Root Node of Trie
         TrieNode root = new TrieNode();
