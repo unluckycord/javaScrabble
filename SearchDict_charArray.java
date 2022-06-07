@@ -98,7 +98,8 @@ public class SearchDict_charArray {
     // Driver program to test above function
     public static void main(String args[]) {
         // Let the given dictionary be following
-        String Dict[] = Assets.dictionary.get(i);
+        String Dict[] = { "go", "bat", "me", "eat",
+                "goal", "boy", "run", "game" };
 
         // Root Node of Trie
         TrieNode root = new TrieNode();
