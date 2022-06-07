@@ -60,14 +60,23 @@ public class GameLogic {
         for (int i = 0; i < 7; i++) {
             storage.add(currentLetters[i]);
         }
+
+        
         for (int i = 0; i < 7; i++) {
+            System.out.println(storage);
+            System.out.println(letter);
+            char currentLetter = storage.get(i);
             for (int f = 0; i < letter.size() - 1; i++) {
-                if (letter.get(i) == storage.get(f)) {
+                char currentPlayedLetter = letter.get(f);
+                if (currentLetter == currentPlayedLetter) {
+                    System.out.println("MATCH:" + letter.get(i));
                     storage.remove(f);
                     letter.remove(i);
                 }
             }
         }
+
+        
         char[] newCurrentLetters = new char[storage.size() - 1];
         for (int i = 0; i < storage.size() - 1; i++) {
             newCurrentLetters[i] = storage.get(i);
@@ -102,7 +111,6 @@ public class GameLogic {
                 totalPoints.add(letterScore.get(letter.get(i)));
             }
         }
-        System.out.println(totalPoints);
         for (int i = 0; i < totalPoints.size(); i++) {
             score += totalPoints.get(i);
         }
@@ -166,7 +174,7 @@ public class GameLogic {
 
             }
             player.setScore(playerScore(letter, x, y, gameBoard, letterScore), player);
-            // removeLetters(player, letter);
+            //removeLetters(player, letter);
             // newLetters(letterCount, 7-(letter.size()-1), player);
             System.out.println(player.getUsername() + ": " + player.getScore());
         } else {
