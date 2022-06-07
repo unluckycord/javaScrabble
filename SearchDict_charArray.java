@@ -102,7 +102,11 @@ public class SearchDict_charArray {
         // Let the given dictionary be following
 
         wordStorage.loadingWords();
-        String Dict[];
+        String Dict[] = { "cat", "dog", "game" };
+
+        for (int i = 0; i < wordStorage.wordbank.size() - 1; i++) {
+            Dict[i] = wordStorage.wordbank.get
+        }
 
         // Root Node of Trie
         TrieNode root = new TrieNode();
