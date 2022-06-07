@@ -141,20 +141,22 @@ public class GameLogic {
             askForLetterAndPos(player, letter, x, y, ask);
         }
         for (int i = 0; i < letter.size() - 1; i++) {
-            if (gameBoard.setSpace(letter.get(i), x.get(i), y.get(i))) {
-
-                gameBoard.setSpace(letter.get(i), x.get(i), y.get(i));
-
-            } else {
-                System.out.println("space already taken");
-                playerMove(letterScore, letterCount, ask, player, gameBoard);
-                return 0;
-            }
-
             word += letter.get(i);
         }
         word = word.substring(0, letter.size() - 1);
-        if (GameLogic.wordComparison(word)) {
+        if (GameLogic.wordComparison(word)){
+            for (int i = 0; i < letter.size() - 1; i++) {
+                if (gameBoard.setSpace(letter.get(i), x.get(i), y.get(i))) {
+    
+                    gameBoard.setSpace(letter.get(i), x.get(i), y.get(i));
+    
+                } else {
+                    System.out.println("space already taken");
+                    playerMove(letterScore, letterCount, ask, player, gameBoard);
+                    return 0;
+                }
+    
+            }
             player.setScore(playerScore(letter, x, y, gameBoard, letterScore), player);
             // removeLetters(player, letter);
             // newLetters(letterCount, 7-(letter.size()-1), player);
