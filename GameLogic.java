@@ -39,7 +39,8 @@ public class GameLogic {
             ArrayList<Integer> x, ArrayList<Integer> y, Scanner ask) {
         String letterInput;
         System.out.println(player.getUsername() + ": " + playersLetters(player));
-        System.out.println("input your Letter, an x and y pos to play(seperated by a new line), type . to put word\n");
+        System.out.println(
+                "Input your letter first, x coordinate second, and y coordinate third. \nThen input a . and input seperate numbers twice. \nEX. \na \n6 \n8 \np \n7 \n8 \np \n8 \n8 \nl \n9 \n8 \ne \n9 \n8 \n. \n1 \n2 \n");
         letterInput = ask.next().toUpperCase();
         /*
          * if(letterInput == "*"){
@@ -144,18 +145,18 @@ public class GameLogic {
             word += letter.get(i);
         }
         word = word.substring(0, letter.size() - 1);
-        if (GameLogic.wordComparison(word)){
+        if (GameLogic.wordComparison(word)) {
             for (int i = 0; i < letter.size() - 1; i++) {
                 if (gameBoard.setSpace(letter.get(i), x.get(i), y.get(i))) {
-    
+
                     gameBoard.setSpace(letter.get(i), x.get(i), y.get(i));
-    
+
                 } else {
                     System.out.println("space already taken");
                     playerMove(letterScore, letterCount, ask, player, gameBoard);
                     return 0;
                 }
-    
+
             }
             player.setScore(playerScore(letter, x, y, gameBoard, letterScore), player);
             // removeLetters(player, letter);
