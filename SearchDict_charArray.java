@@ -98,6 +98,7 @@ public class SearchDict_charArray {
     // Driver program to test above function
     public static void main(String args[]) {
         // Let the given dictionary be following
+
         Assets.loaddictionary();
         String Dict[] = ("dictionary.txt");
 
