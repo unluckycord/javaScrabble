@@ -136,12 +136,19 @@ public class GameLogic {
         y.clear();
         letter.clear();
         word = "";
+        char newLetter = ' ';
 
         askForLetterAndPos(player, letter, x, y, ask);
         while (letter.get(letter.size() - 1) != '.') {
             askForLetterAndPos(player, letter, x, y, ask);
         }
         for (int i = 0; i < letter.size() - 1; i++) {
+            if(letter.get(i) == '*'){
+                System.out.println("blank tile detected, input your choice letter");
+                newLetter = ask.next().toUpperCase().charAt(0);
+                letter.set(i,newLetter);
+            }
+            System.out.println(letter);
             word += letter.get(i);
         }
         word = word.substring(0, letter.size() - 1);
