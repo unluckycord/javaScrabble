@@ -33,8 +33,8 @@ public class SearchDict_charArray {
         int n = Key.length();
         TrieNode pChild = root;
 
-        for (int i = 0; i < n; i++) {
-            int index = Key.charAt(i) - 'a';
+        for (int i = 0; i < n + 'A'; i++) {
+            int index = Key.charAt(i) - 'A';
 
             if (pChild.Child[index] == null)
                 pChild.Child[index] = new TrieNode();
@@ -102,11 +102,13 @@ public class SearchDict_charArray {
         // Let the given dictionary be following
 
         wordStorage.loadingWords();
-        String Dict[] = {};
+
+        String Dict[];
+        Dict = new String[wordStorage.wordbank.size()];
 
         String[] dicts = wordStorage.wordbank.keySet().toArray(new String[0]);
 
-        for (int i = 0; i < wordStorage.wordbank.size() - 1; i++) {
+        for (int i = 0; i < wordStorage.wordbank.size(); i++) {
             String word = dicts[i];
             Dict[i] = word;
         }
@@ -119,7 +121,7 @@ public class SearchDict_charArray {
         for (int i = 0; i < n; i++)
             insert(root, Dict[i]);
 
-        char arr[] = { 'e', 'o', 'b', 'a', 'm', 'g', 'l' };
+        char arr[] = { 'E', 'O', 'B', 'A', 'M', 'G', 'L' };
         int N = arr.length;
 
         PrintAllWords(arr, root, N);
