@@ -8,7 +8,7 @@ public class GameLogic {
     private static ArrayList<Integer> y = new ArrayList<Integer>();
     private static ArrayList<Integer> x = new ArrayList<Integer>();
     private static ArrayList<Character> letter = new ArrayList<Character>();
-    private static ArrayList<Integer> totalPoints  = new ArrayList<Integer>();
+    private static ArrayList<Integer> totalPoints = new ArrayList<Integer>();
     private static String word;
 
     // will compare user input to words in wordbank
@@ -35,8 +35,8 @@ public class GameLogic {
         return letters;
     }
 
-    public static void askForLetterAndPos(Player player, ArrayList<Character> letter, 
-    ArrayList<Integer> x, ArrayList<Integer> y, Scanner ask) {
+    public static void askForLetterAndPos(Player player, ArrayList<Character> letter,
+            ArrayList<Integer> x, ArrayList<Integer> y, Scanner ask) {
         String letterInput;
         System.out.println(player.getUsername() + ": " + playersLetters(player));
         System.out.println("input your Letter, an x and y pos to play(seperated by a new line), type . to put word\n");
@@ -53,30 +53,30 @@ public class GameLogic {
 
     }
 
-    public static void removeLetters(Player player, ArrayList<Character> letter){
+    public static void removeLetters(Player player, ArrayList<Character> letter) {
         char[] currentLetters = player.getLettersOwned();
         ArrayList<Character> storage = new ArrayList<Character>();
-        for(int i = 0; i < 7; i++){
+        for (int i = 0; i < 7; i++) {
             storage.add(currentLetters[i]);
         }
-        for(int i = 0; i < 7; i++){
-            for(int f = 0; i < letter.size()-1; i++){
-                if(letter.get(i) == storage.get(f)){
+        for (int i = 0; i < 7; i++) {
+            for (int f = 0; i < letter.size() - 1; i++) {
+                if (letter.get(i) == storage.get(f)) {
                     storage.remove(f);
                     letter.remove(i);
                 }
             }
         }
-        char[] newCurrentLetters = new char[storage.size()-1]; 
-        for(int i = 0; i < storage.size()-1; i++){
+        char[] newCurrentLetters = new char[storage.size() - 1];
+        for (int i = 0; i < storage.size() - 1; i++) {
             newCurrentLetters[i] = storage.get(i);
         }
         player.setLettersOwned(newCurrentLetters, player);
     }
 
-    public static void newLetters(HashMap<Character, Integer> letterCount, int missingLetters, Player player){
+    public static void newLetters(HashMap<Character, Integer> letterCount, int missingLetters, Player player) {
         String playersLetters = "";
-        for(int i = 0; i < 7 - missingLetters; i++){
+        for (int i = 0; i < 7 - missingLetters; i++) {
             playersLetters += player.getLettersOwned();
         }
         for (int i = 0; i < missingLetters; i++) {
@@ -85,31 +85,33 @@ public class GameLogic {
         player.setLettersOwned(playersLetters.toCharArray(), player);
     }
 
-    public static int playerScore(ArrayList<Character> letter, ArrayList<Integer> x, 
-    ArrayList<Integer>y, Board gameBoard, HashMap<Character, Integer> letterScore){
-        letter.remove(letter.size()-1);
+    public static int playerScore(ArrayList<Character> letter, ArrayList<Integer> x,
+            ArrayList<Integer> y, Board gameBoard, HashMap<Character, Integer> letterScore) {
+        letter.remove(letter.size() - 1);
         int score = 0;
         totalPoints.clear();
-        for(int i = 0; i< letter.size(); i++){
-            if(gameBoard.getTripleLetterScore(x.get(i), y.get(i))){
+        for (int i = 0; i < letter.size(); i++) {
+            if (gameBoard.getTripleLetterScore(x.get(i), y.get(i))) {
                 totalPoints.add(letterScore.get(letter.get(i)) * 3);
                 gameBoard.setTripleLetterScore(x.get(i), y.get(i), false);
-            }else if(gameBoard.getDoubleLetterScore(x.get(i), y.get(i))){
+            } else if (gameBoard.getDoubleLetterScore(x.get(i), y.get(i))) {
                 totalPoints.add(letterScore.get(letter.get(i)) * 2);
                 gameBoard.setDoubleLetterScore(x.get(i), y.get(i), false);
-            }else{
+            } else {
                 totalPoints.add(letterScore.get(letter.get(i)));
             }
         }
         System.out.println(totalPoints);
-        for(int i = 0; i < totalPoints.size(); i++){
+        for (int i = 0; i < totalPoints.size(); i++) {
             score += totalPoints.get(i);
         }
-        for(int i = 0; i < totalPoints.size(); i++){
-            if(gameBoard.getTripleWordScore(x.get(i), y.get(i))){
+        for (int i = 0; i < totalPoints.size(); i++) {
+            if (gameBoard.getTripleWordScore(x.get(i), y.get(i))) {
+                gameBoard.setTripleWordScore(x.get(i), y.get(i), false);
                 return score * 3;
             }
-            if(gameBoard.getDoubleWordScore(x.get(i), y.get(i))){
+            if (gameBoard.getDoubleWordScore(x.get(i), y.get(i))) {
+                gameBoard.setDoubleWordScore(x.get(i), y.get(i), false);
                 return score * 2;
             }
         }
@@ -117,15 +119,18 @@ public class GameLogic {
     }
 
     public static void AiLogic(HashMap<Character, Integer> letterScore,
-    HashMap<Character, Integer> letterCount, Ai Ai,
-    Board gameBoard){
-        
+            HashMap<Character, Integer> letterCount, Ai Ai,
+            Board gameBoard) {
+
+        // set up a way to extrapolate words from an char array
+        // the char array is referenced with .getLettersOwned
+
     }
 
     // asks for a user word, still needs to be worked on
     public static int playerMove(HashMap<Character, Integer> letterScore,
-    HashMap<Character, Integer> letterCount, Scanner ask, Player player,
-    Board gameBoard) {
+            HashMap<Character, Integer> letterCount, Scanner ask, Player player,
+            Board gameBoard) {
         x.clear();
         y.clear();
         letter.clear();
@@ -139,20 +144,20 @@ public class GameLogic {
             if (gameBoard.setSpace(letter.get(i), x.get(i), y.get(i))) {
 
                 gameBoard.setSpace(letter.get(i), x.get(i), y.get(i));
-                
+
             } else {
                 System.out.println("space already taken");
                 playerMove(letterScore, letterCount, ask, player, gameBoard);
                 return 0;
             }
-            
+
             word += letter.get(i);
         }
         word = word.substring(0, letter.size() - 1);
         if (GameLogic.wordComparison(word)) {
             player.setScore(playerScore(letter, x, y, gameBoard, letterScore), player);
-            //removeLetters(player, letter);
-            //newLetters(letterCount, 7-(letter.size()-1), player);
+            // removeLetters(player, letter);
+            // newLetters(letterCount, 7-(letter.size()-1), player);
             System.out.println(player.getUsername() + ": " + player.getScore());
         } else {
             System.out.println("try again, not a valid word");
