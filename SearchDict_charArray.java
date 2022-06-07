@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 // Java program to print all valid words that
 // are possible using character of array
 // Pulled from
@@ -96,11 +98,11 @@ public class SearchDict_charArray {
     }
 
     // Driver program to test above function
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         // Let the given dictionary be following
 
-        Assets.loaddictionary();
-        String Dict[] = ("dictionary.txt");
+        wordStorage.loadingWords();
+        String Dict[];
 
         // Root Node of Trie
         TrieNode root = new TrieNode();

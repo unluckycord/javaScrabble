@@ -28,14 +28,4 @@ public class Assets {
             }
         }
     }
-
-    protected static void loaddictionary() throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader("Assets/dictionary.txt"))) {
-            String line = br.readLine();
-            while (line != null) {
-                logo.add(line);
-                line = br.readLine();
-            }
-        }
-    }
 }
