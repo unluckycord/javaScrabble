@@ -164,6 +164,7 @@ public class GameLogic {
             System.out.println(player.getUsername() + ": " + player.getScore());
         } else {
             System.out.println("try again, not a valid word");
+            playerMove(letterScore, letterCount, ask, player, gameBoard);
         }
         return 0;
     }
