@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class ScabbleSolver {
     public static void main(String[] args) throws IOException {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("This is where your letters go");
         // Input the letters from the AI Rack here
@@ -19,7 +20,7 @@ public class ScabbleSolver {
         Map<Character, Integer> lettersCountMap = getCharacterCountMap(letters);
 
         BufferedReader reader = new BufferedReader(
-                new FileReader("C:/Users/Nightmare357/Scrabble/javaScrabble/dictionary.txt"));
+                new FileReader("C:/Users/Nightmare357/Scrabble/javaScrabble/Assets/dictionary.txt"));
 
         System.out.println("Please print the dictionary Java I'm begging you");
 

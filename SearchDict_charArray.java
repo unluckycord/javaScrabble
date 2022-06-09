@@ -33,8 +33,8 @@ public class SearchDict_charArray {
         int n = Key.length();
         TrieNode pChild = root;
 
-        for (int i = 0; i < n + 'A'; i++) {
-            int index = Key.charAt(i) - 'A';
+        for (int i = 0; i < n + 'a'; i++) {
+            int index = Key.charAt(i) - 'a';
 
             if (pChild.Child[index] == null)
                 pChild.Child[index] = new TrieNode();
@@ -58,7 +58,7 @@ public class SearchDict_charArray {
         for (int K = 0; K < SIZE; K++) {
             if (Hash[K] == true && root.Child[K] != null) {
                 // add current character
-                char c = (char) (K + 'A');
+                char c = (char) (K + 'a');
 
                 // Recursively search reaming character
                 // of word in trie
@@ -90,7 +90,7 @@ public class SearchDict_charArray {
             // if we found a character which is child
             // of Trie root
             if (Hash[i] == true && pChild.Child[i] != null) {
-                str = str + (char) (i + 'A');
+                str = str + (char) (i + 'a');
                 searchWord(pChild.Child[i], Hash, str);
                 str = "";
             }
