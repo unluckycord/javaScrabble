@@ -20,7 +20,7 @@ public class ScabbleSolver {
         Map<Character, Integer> lettersCountMap = getCharacterCountMap(letters);
 
         BufferedReader reader = new BufferedReader(
-                new FileReader("C:/Users/Nightmare357/Scrabble/javaScrabble/Assets/dictionary.txt"));
+                new FileReader("C:/Users/Nightmare357/Scrabble/javaScrabble/Assets/dictionary2.txt"));
 
         System.out.println("Please print the dictionary Java I'm begging you");
 
@@ -41,7 +41,8 @@ public class ScabbleSolver {
                 System.out.println(currentWord);
             }
             scanner.close();
-            reader.close();
+            // reader.close(); makes the system crash and idk why
+            // but without it, the thing keeps leaving me in the terminal
         }
     }
 
