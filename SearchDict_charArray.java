@@ -58,7 +58,7 @@ public class SearchDict_charArray {
         for (int K = 0; K < SIZE; K++) {
             if (Hash[K] == true && root.Child[K] != null) {
                 // add current character
-                char c = (char) (K + 'a');
+                char c = (char) (K + 'A');
 
                 // Recursively search reaming character
                 // of word in trie
@@ -90,7 +90,7 @@ public class SearchDict_charArray {
             // if we found a character which is child
             // of Trie root
             if (Hash[i] == true && pChild.Child[i] != null) {
-                str = str + (char) (i + 'a');
+                str = str + (char) (i + 'A');
                 searchWord(pChild.Child[i], Hash, str);
                 str = "";
             }
