@@ -13,9 +13,8 @@ public class wordStorage {
     // this method grabs words from the dictionary
     // and stores them in an ArrayList
 
-
     // code modified from stackoverflow
-    //https://stackoverflow.com/questions/19844649/java-read-file-and-store-text-in-an-array
+    // https://stackoverflow.com/questions/19844649/java-read-file-and-store-text-in-an-array
     public static void loadingWords() throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader("Assets/dictionary.txt"))) {
             String line = br.readLine();
