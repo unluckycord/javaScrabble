@@ -11,6 +11,8 @@ import java.util.Scanner;
 public class ScabbleSolver {
     public static void main(String[] args) throws IOException {
 
+        // Ai.getLettersOwned(); isn't working
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("This is where your letters go");
         // Input the letters from the AI Rack here
@@ -22,7 +24,7 @@ public class ScabbleSolver {
         BufferedReader reader = new BufferedReader(
                 new FileReader("C:/Users/Nightmare357/Scrabble/javaScrabble/Assets/dictionary2.txt"));
 
-        System.out.println("Please print the dictionary Java I'm begging you");
+        System.out.println("Please print the usable words Java I'm begging you");
 
         for (String currentWord = reader.readLine(); currentWord != null; currentWord = reader.readLine()) {
             Map<Character, Integer> currentWordMap = getCharacterCountMap(currentWord);
