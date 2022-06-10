@@ -22,9 +22,11 @@ public class ScabbleSolver {
         Map<Character, Integer> lettersCountMap = getCharacterCountMap(letters);
 
         BufferedReader reader = new BufferedReader(
-                new FileReader("C:/Users/Nightmare357/Scrabble/javaScrabble/Assets/dictionary2.txt"));
+                new FileReader("C:/Users/Nightmare357/Scrabble/javaScrabble/Assets/dictionary.txt"));
 
         System.out.println("Please print the usable words Java I'm begging you");
+
+        // need it to look at these words and decide the best to input onto scrabble
 
         for (String currentWord = reader.readLine(); currentWord != null; currentWord = reader.readLine()) {
             Map<Character, Integer> currentWordMap = getCharacterCountMap(currentWord);
@@ -43,6 +45,7 @@ public class ScabbleSolver {
                 System.out.println(currentWord);
             }
             scanner.close();
+            reader.close();
             // reader.close(); makes the system crash and idk why
             // but without it, the thing keeps leaving me in the terminal
         }
