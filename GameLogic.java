@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
 public class GameLogic {
     public static int total = 100;
+    private static ArrayList<String> AisWords = new ArrayList<String>();
     private static ArrayList<Integer> y = new ArrayList<Integer>();
     private static ArrayList<Integer> x = new ArrayList<Integer>();
     private static ArrayList<Character> letter = new ArrayList<Character>();
@@ -127,7 +129,11 @@ public class GameLogic {
             HashMap<Character, Integer> letterCount, Ai Ai,
             Board gameBoard) throws IOException {
         char[] storage = Ai.getLettersOwned();
-
+        AisWords.clear();
+        letter.clear();
+        x.clear();
+        y.clear();
+        String Randomword = "";
         // Input the letters from the AI Rack here
         // Use something else besides next line
         String letters = "";
@@ -140,10 +146,6 @@ public class GameLogic {
 
         BufferedReader reader = new BufferedReader(
                 new FileReader("Assets/dictionary.txt"));
-
-        System.out.println("Please print the usable words Java I'm begging you");
-
-        // need it to look at these words and decide the best to input onto scrabble
 
         for (String currentWord = reader.readLine(); currentWord != null; currentWord = reader.readLine()) {
             Map<Character, Integer> currentWordMap = getCharacterCountMap(currentWord);
@@ -159,12 +161,11 @@ public class GameLogic {
                 }
             }
             if (canMakeCurrentWord) {
-                System.out.println(currentWord);
+                AisWords.add(currentWord);
             }
-            // reader.close();
-            // reader.close(); makes the system crash and idk why
-            // but without it, the thing keeps leaving me in the terminal
         }
+        Random rand = new Random();
+        Randomword = Assets.Ainames.get(rand.nextInt(26));
     }
 
     private static Map<Character, Integer> getCharacterCountMap(String letters) {
