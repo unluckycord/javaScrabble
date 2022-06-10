@@ -95,7 +95,8 @@ public class GameLogic {
 
     public static int playerScore(ArrayList<Character> letter, ArrayList<Integer> x,
             ArrayList<Integer> y, Board gameBoard, HashMap<Character, Integer> letterScore) {
-        letter.remove(letter.size() - 1);
+        letter.remove(letter.size());
+        // edittteedddd
         int score = 0;
         totalPoints.clear();
         for (int i = 0; i < letter.size(); i++) {
@@ -180,7 +181,7 @@ public class GameLogic {
             x.add(i);
             y.add(Randomy);
         }
-
+        System.out.println(Randomword);
         for (int i = 0; i < letter.size(); i++) {
             if (gameBoard.setSpace(letter.get(i), x.get(i), y.get(i))) {
 
@@ -190,6 +191,7 @@ public class GameLogic {
                 AiLogic(letterScore, letterCount, Ai, gameBoard);
             }
         }
+        System.out.println(letter);
         Ai.setScore(playerScore(letter, x, y, gameBoard, letterScore), Ai);
         System.out.println(Ai.getUsername() + ": " + Ai.getScore());
     }
@@ -246,6 +248,7 @@ public class GameLogic {
                 }
 
             }
+            letter.remove(letter.size());
             player.setScore(playerScore(letter, x, y, gameBoard, letterScore), player);
             // removeLetters(player, letter);
             // newLetters(letterCount, 7-(letter.size()-1), player);
