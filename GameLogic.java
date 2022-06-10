@@ -145,7 +145,8 @@ public class GameLogic {
         Map<Character, Integer> lettersCountMap = getCharacterCountMap(letters);
 
         BufferedReader reader = new BufferedReader(
-                new FileReader("dictionary.txt"));
+                new FileReader("C:/Users/Nightmare357/Scrabble/javaScrabble/dictionary.txt"));
+        // BufferedReader reader = new BufferedReader(new FileReader("dictionary.txt"));
 
         for (String currentWord = reader.readLine(); currentWord != null; currentWord = reader.readLine()) {
             Map<Character, Integer> currentWordMap = getCharacterCountMap(currentWord);
@@ -165,7 +166,24 @@ public class GameLogic {
             }
         }
         Random rand = new Random();
-        Randomword = Assets.Ainames.get(rand.nextInt(26));
+        Randomword = AisWords.get(rand.nextInt(AisWords.size() - 1));
+        char[] Aichoice = Randomword.toCharArray();
+        for (int i = 0; i < Aichoice.length - 1; i++) {
+            letter.add(Aichoice[i]);
+        }
+        int Randomx = rand.nextInt(15 - letter.size() - 1);
+        int Randomy = rand.nextInt(15 - letter.size() - 1);
+        for (int i = 0; i < Randomx; i++) {
+            x.add(i);
+            y.add(Randomy);
+        }
+        for (int i = 0; i < letter.size() - 1; i++) {
+            if (gameBoard.setSpace(letter.get(i), x.get(i), y.get(i))) {
+
+                gameBoard.setSpace(letter.get(i), x.get(i), y.get(i));
+
+            }
+        }
     }
 
     private static Map<Character, Integer> getCharacterCountMap(String letters) {
