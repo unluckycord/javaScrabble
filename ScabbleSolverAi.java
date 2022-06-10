@@ -45,7 +45,7 @@ public class ScabbleSolverAi {
                 System.out.println(currentWord);
             }
             scanner.close();
-            reader.close();
+            // reader.close();
             // reader.close(); makes the system crash and idk why
             // but without it, the thing keeps leaving me in the terminal
         }
