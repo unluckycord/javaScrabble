@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -140,7 +139,7 @@ public class GameLogic {
         Map<Character, Integer> lettersCountMap = getCharacterCountMap(letters);
 
         BufferedReader reader = new BufferedReader(
-                new FileReader("C:/Users/Nightmare357/Scrabble/javaScrabble/Assets/dictionary.txt"));
+                new FileReader("Assets/dictionary.txt"));
 
         System.out.println("Please print the usable words Java I'm begging you");
 
