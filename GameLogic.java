@@ -95,7 +95,6 @@ public class GameLogic {
 
     public static int playerScore(ArrayList<Character> letter, ArrayList<Integer> x,
             ArrayList<Integer> y, Board gameBoard, HashMap<Character, Integer> letterScore) {
-        letter.remove(letter.size());
         // edittteedddd
         int score = 0;
         totalPoints.clear();
