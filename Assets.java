@@ -11,7 +11,7 @@ public class Assets {
 
     protected static void loadAssets() throws IOException {
         try (BufferedReader br = new BufferedReader(
-                new FileReader("C:/Users/Nightmare357/Scrabble/javaScrabble/logo.ans"))) {
+                new FileReader("logo.ans"))) {
             // try (BufferedReader br = new BufferedReader(new FileReader("logo.ans"))) {
             String line = br.readLine();
             while (line != null) {
@@ -23,7 +23,7 @@ public class Assets {
 
     protected static void loadAinames() throws IOException {
         try (BufferedReader br = new BufferedReader(
-                new FileReader("C:/Users/Nightmare357/Scrabble/javaScrabble/Ainames.txt"))) {
+                new FileReader("Ainames.txt"))) {
             // try (BufferedReader br = new BufferedReader(new FileReader("Ainames.txt"))) {
             String line = br.readLine();
             while (line != null) {

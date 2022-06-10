@@ -17,7 +17,7 @@ public class wordStorage {
     // https://stackoverflow.com/questions/19844649/java-read-file-and-store-text-in-an-array
     public static void loadingWords() throws IOException {
         try (BufferedReader br = new BufferedReader(
-                new FileReader("C:/Users/Nightmare357/Scrabble/javaScrabble/dictionary.txt"))) {
+                new FileReader("dictionary.txt"))) {
             // try (BufferedReader br = new BufferedReader(new
             // FileReader("dictionary.txt"))) {
             String line = br.readLine();
@@ -25,6 +25,9 @@ public class wordStorage {
                 wordbank.put(line, 0);
                 line = br.readLine();
             }
+        }
+        catch(Exception e){
+            
         }
     }
 }
