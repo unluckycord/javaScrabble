@@ -165,25 +165,33 @@ public class GameLogic {
                 AisWords.add(currentWord);
             }
         }
+        if (AisWords.size() < 1) {
+            return;
+        }
         Random rand = new Random();
-        Randomword = AisWords.get(rand.nextInt(AisWords.size() - 1));
+        Randomword = AisWords.get(rand.nextInt(AisWords.size()));
         char[] Aichoice = Randomword.toCharArray();
-        for (int i = 0; i < Aichoice.length - 1; i++) {
+        for (int i = 0; i < Aichoice.length; i++) {
             letter.add(Aichoice[i]);
         }
-        int Randomx = rand.nextInt(15 - letter.size() - 1);
-        int Randomy = rand.nextInt(15 - letter.size() - 1);
-        for (int i = 0; i < Randomx; i++) {
+        int Randomx = (int) Math.floor(Math.random() * (15 - letter.size()) + 1);
+        int Randomy = (int) Math.floor(Math.random() * (15 - letter.size()) + 1);
+        for (int i = 1; i <= Randomx; i++) {
             x.add(i);
             y.add(Randomy);
         }
-        for (int i = 0; i < letter.size() - 1; i++) {
+
+        for (int i = 0; i < letter.size(); i++) {
             if (gameBoard.setSpace(letter.get(i), x.get(i), y.get(i))) {
 
                 gameBoard.setSpace(letter.get(i), x.get(i), y.get(i));
 
+            } else {
+                AiLogic(letterScore, letterCount, Ai, gameBoard);
             }
         }
+        Ai.setScore(playerScore(letter, x, y, gameBoard, letterScore), Ai);
+        System.out.println(Ai.getUsername() + ": " + Ai.getScore());
     }
 
     private static Map<Character, Integer> getCharacterCountMap(String letters) {
