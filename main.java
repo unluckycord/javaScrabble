@@ -105,7 +105,7 @@ public class main {
     }
 
     public static void AiLoop(Board gameBoard, HashMap<Character, Integer> letterScore,
-            HashMap<Character, Integer> letterCount, Ai[] ais) {
+            HashMap<Character, Integer> letterCount, Ai[] ais) throws IOException {
         for (int indexOfAi = 0; indexOfAi < AiCount; indexOfAi++) {
             System.out.println(gameBoard);
             GameLogic.AiLogic(letterScore, letterCount, ais[indexOfAi], gameBoard);

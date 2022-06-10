@@ -1,5 +1,10 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -55,7 +60,6 @@ public class GameLogic {
             storage.add(currentLetters[i]);
         }
 
-        
         for (int i = 0; i < 7; i++) {
             System.out.println(storage);
             System.out.println(letter);
@@ -70,7 +74,6 @@ public class GameLogic {
             }
         }
 
-        
         char[] newCurrentLetters = new char[storage.size() - 1];
         for (int i = 0; i < storage.size() - 1; i++) {
             newCurrentLetters[i] = storage.get(i);
@@ -123,7 +126,58 @@ public class GameLogic {
 
     public static void AiLogic(HashMap<Character, Integer> letterScore,
             HashMap<Character, Integer> letterCount, Ai Ai,
-            Board gameBoard) {
+            Board gameBoard) throws IOException {
+        char[] storage = Ai.getLettersOwned();
+
+        // Input the letters from the AI Rack here
+        // Use something else besides next line
+        String letters = "";
+        for (int i = 0; i < Ai.getLettersOwned().length - 1; i++) {
+            letters += storage[i];
+
+        }
+
+        Map<Character, Integer> lettersCountMap = getCharacterCountMap(letters);
+
+        BufferedReader reader = new BufferedReader(
+                new FileReader("C:/Users/Nightmare357/Scrabble/javaScrabble/Assets/dictionary.txt"));
+
+        System.out.println("Please print the usable words Java I'm begging you");
+
+        // need it to look at these words and decide the best to input onto scrabble
+
+        for (String currentWord = reader.readLine(); currentWord != null; currentWord = reader.readLine()) {
+            Map<Character, Integer> currentWordMap = getCharacterCountMap(currentWord);
+
+            boolean canMakeCurrentWord = true;
+            for (Character character : currentWordMap.keySet()) {
+                int currentWordCharCount = currentWordMap.get(character);
+                int lettersCharCount = lettersCountMap.containsKey(character) ? lettersCountMap.get(character) : 0;
+
+                if (currentWordCharCount > lettersCharCount) {
+                    canMakeCurrentWord = false;
+                    break;
+                }
+            }
+            if (canMakeCurrentWord) {
+                System.out.println(currentWord);
+            }
+            // reader.close();
+            // reader.close(); makes the system crash and idk why
+            // but without it, the thing keeps leaving me in the terminal
+        }
+    }
+
+    private static Map<Character, Integer> getCharacterCountMap(String letters) {
+        Map<Character, Integer> lettersCountMap = new HashMap<>();
+
+        for (int i = 0; i < letters.length(); i++) {
+            char currentChar = letters.charAt(i);
+
+            int count = lettersCountMap.containsKey(currentChar) ? lettersCountMap.get(currentChar) : 0;
+            lettersCountMap.put(currentChar, count + 1);
+        }
+        return lettersCountMap;
 
         // set up a way to extrapolate words from an char array
         // the char array is referenced with .getLettersOwned
@@ -145,10 +199,10 @@ public class GameLogic {
             askForLetterAndPos(player, letter, x, y, ask);
         }
         for (int i = 0; i < letter.size() - 1; i++) {
-            if(letter.get(i) == '*'){
+            if (letter.get(i) == '*') {
                 System.out.println("blank tile detected, input your choice letter");
                 newLetter = ask.next().toUpperCase().charAt(0);
-                letter.set(i,newLetter);
+                letter.set(i, newLetter);
             }
             word += letter.get(i);
         }
@@ -167,7 +221,7 @@ public class GameLogic {
 
             }
             player.setScore(playerScore(letter, x, y, gameBoard, letterScore), player);
-            //removeLetters(player, letter);
+            // removeLetters(player, letter);
             // newLetters(letterCount, 7-(letter.size()-1), player);
             System.out.println(player.getUsername() + ": " + player.getScore());
         } else {
