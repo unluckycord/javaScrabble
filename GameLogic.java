@@ -134,6 +134,7 @@ public class GameLogic {
         x.clear();
         y.clear();
         String Randomword = "";
+        boolean CanPlay = false;
         // Input the letters from the AI Rack here
         // Use something else besides next line
         String letters = "";
@@ -176,13 +177,13 @@ public class GameLogic {
         }
         int Randomx = (int) Math.floor(Math.random() * (15 - letter.size()) + 1);
         int Randomy = (int) Math.floor(Math.random() * (15 - letter.size()) + 1);
-        for (int i = 1; i <= Randomx; i++) {
+        for (int i = Randomx; i <= 15; i++) {
             x.add(i);
             y.add(Randomy);
         }
-        System.out.println(Randomword);
         for (int i = 0; i < letter.size(); i++) {
             if (gameBoard.setSpace(letter.get(i), x.get(i), y.get(i))) {
+                CanPlay = true;
 
                 gameBoard.setSpace(letter.get(i), x.get(i), y.get(i));
 
@@ -190,8 +191,9 @@ public class GameLogic {
                 AiLogic(letterScore, letterCount, Ai, gameBoard);
             }
         }
-        System.out.println(letter);
-        Ai.setScore(playerScore(letter, x, y, gameBoard, letterScore), Ai);
+        if (CanPlay) {
+            Ai.setScore(playerScore(letter, x, y, gameBoard, letterScore), Ai);
+        }
         System.out.println(Ai.getUsername() + ": " + Ai.getScore());
     }
 
@@ -247,7 +249,7 @@ public class GameLogic {
                 }
 
             }
-            letter.remove(letter.size());
+            letter.remove(letter.size() - 1);
             player.setScore(playerScore(letter, x, y, gameBoard, letterScore), player);
             // removeLetters(player, letter);
             // newLetters(letterCount, 7-(letter.size()-1), player);
