@@ -145,7 +145,7 @@ public class GameLogic {
         Map<Character, Integer> lettersCountMap = getCharacterCountMap(letters);
 
         BufferedReader reader = new BufferedReader(
-                new FileReader("Assets/dictionary.txt"));
+                new FileReader("dictionary.txt"));
 
         for (String currentWord = reader.readLine(); currentWord != null; currentWord = reader.readLine()) {
             Map<Character, Integer> currentWordMap = getCharacterCountMap(currentWord);

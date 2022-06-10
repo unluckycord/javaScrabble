@@ -10,7 +10,7 @@ public class Assets {
     public static ArrayList<String> dictionary = new ArrayList<String>();
 
     protected static void loadAssets() throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader("Assets/logo.ans"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("logo.ans"))) {
             String line = br.readLine();
             while (line != null) {
                 logo.add(line);
@@ -20,7 +20,7 @@ public class Assets {
     }
 
     protected static void loadAinames() throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader("Assets/Ainames.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("Ainames.txt"))) {
             String line = br.readLine();
             while (line != null) {
                 Ainames.add(line);
