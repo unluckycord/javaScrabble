@@ -125,6 +125,10 @@ public class GameLogic {
         return score;
     }
 
+    // WordSolver in AiLogic was Editted from Coding with John
+    // The rest was done by Logan and Zach
+    // https://www.youtube.com/watch?v=urqlvUX-Q-Q
+
     public static void AiLogic(HashMap<Character, Integer> letterScore,
             HashMap<Character, Integer> letterCount, Ai Ai,
             Board gameBoard) throws IOException {
