@@ -121,6 +121,41 @@ public class GameLogic {
         return score;
     }
 
+    public static boolean removeLettersForAi(Ai Ai, ArrayList<Character> letter) {
+        ArrayList<Character> currentLetters = new ArrayList<Character>();
+        for(Character c: Ai.getLettersOwned() ){
+            currentLetters.add(c);
+        }
+
+        letter.remove(letter.size()-1);
+        System.out.println(letter);
+        System.out.println(currentLetters);
+        for(Character c : letter){
+            if(!currentLetters.remove(c)){
+                return false;
+            }
+        }
+        String storage = "";
+        for(char c : currentLetters){
+            storage += c;
+        }
+        Ai.setLettersOwned(storage.toCharArray(), Ai);
+        return true;
+    }
+
+    public static void newLettersForAi(HashMap<Character, Integer> letterCount, Ai Ai) {
+        int missingLetters = 7 - Ai.getLettersOwned().length;
+        
+        String playersLetters = "";
+        for (char c : Ai.getLettersOwned()) {
+            playersLetters += c;
+        }
+        for (int i = 0; i < missingLetters; i++) {
+            playersLetters += GameLogic.randomLetter(letterCount);
+        }
+        Ai.setLettersOwned(playersLetters.toCharArray(), Ai);
+    }
+
     // WordSolver in AiLogic was Editted from Coding with John
     // The rest was done by Logan and Zach
     // https://www.youtube.com/watch?v=urqlvUX-Q-Q
@@ -193,6 +228,8 @@ public class GameLogic {
         }
         if (CanPlay) {
             Ai.setScore(playerScore(letter, x, y, gameBoard, letterScore), Ai);
+            removeLettersForAi(Ai, letter);
+            newLettersForAi(letterCount, Ai);
         }
         System.out.println(Ai.getUsername() + ": " + Ai.getScore());
     }
